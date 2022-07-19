@@ -7,22 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AutoPharma.Data;
 using AutoPharma.Models;
+using AutoPharma.Models.Interfaces;
 
 namespace AutoPharma.Controllers
 {
     public class LocationsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ILocation _location;
 
-        public LocationsController(AppDbContext context)
+        public LocationsController(ILocation location)
         {
-            _context = context;
+            _location = location;
         }
 
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Locations.ToListAsync());
+            var locationList = await _location.GetAllLocations();
+            return View(locationList);
         }
 
         // GET: Locations/Details/5
@@ -33,8 +35,7 @@ namespace AutoPharma.Controllers
                 return NotFound();
             }
 
-            var location = await _context.Locations
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var location = await _location.GetLocation((int)id);
             if (location == null)
             {
                 return NotFound();
@@ -58,8 +59,7 @@ namespace AutoPharma.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(location);
-                await _context.SaveChangesAsync();
+                await _location.CreateLocation(location);
                 return RedirectToAction(nameof(Index));
             }
             return View(location);
@@ -73,7 +73,7 @@ namespace AutoPharma.Controllers
                 return NotFound();
             }
 
-            var location = await _context.Locations.FindAsync(id);
+            var location = await _location.GetLocation((int)id);
             if (location == null)
             {
                 return NotFound();
@@ -97,8 +97,7 @@ namespace AutoPharma.Controllers
             {
                 try
                 {
-                    _context.Update(location);
-                    await _context.SaveChangesAsync();
+                    await _location.UpdateLocation(id, location);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +123,7 @@ namespace AutoPharma.Controllers
                 return NotFound();
             }
 
-            var location = await _context.Locations
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var location = await _location.GetLocation((int)id);
             if (location == null)
             {
                 return NotFound();
@@ -139,15 +137,18 @@ namespace AutoPharma.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var location = await _context.Locations.FindAsync(id);
-            _context.Locations.Remove(location);
-            await _context.SaveChangesAsync();
+            await _location.DeleteLocation(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool LocationExists(int id)
         {
-            return _context.Locations.Any(e => e.Id == id);
+            var Location = _location.GetLocation((int)id);
+            if (Location == null)
+            {
+                return false;
+            }
+            else return true;
         }
     }
 }

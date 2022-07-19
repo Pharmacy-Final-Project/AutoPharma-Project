@@ -7,23 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AutoPharma.Data;
 using AutoPharma.Models;
+using AutoPharma.Models.Interfaces;
 
 namespace AutoPharma.Controllers
 {
     public class BranchMedicinesController : Controller
     {
+        private readonly IBranchMedicine _branchMedicine;
         private readonly AppDbContext _context;
 
-        public BranchMedicinesController(AppDbContext context)
+        public BranchMedicinesController(IBranchMedicine branchMedicine, AppDbContext context)
         {
+            _branchMedicine = branchMedicine;
             _context = context;
+
         }
 
         // GET: BranchMedicines
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.BranchMedicines.Include(b => b.Branch).Include(b => b.Location).Include(b => b.Medicine);
-            return View(await appDbContext.ToListAsync());
+            var AllBranchMedicine = await _branchMedicine.GetAllBranchMedicine();
+            return View(AllBranchMedicine);
         }
 
         // GET: BranchMedicines/Details/5
@@ -34,11 +38,7 @@ namespace AutoPharma.Controllers
                 return NotFound();
             }
 
-            var branchMedicine = await _context.BranchMedicines
-                .Include(b => b.Branch)
-                .Include(b => b.Location)
-                .Include(b => b.Medicine)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var branchMedicine = await _branchMedicine.GetBranchMedicine((int)id);
             if (branchMedicine == null)
             {
                 return NotFound();
@@ -50,6 +50,7 @@ namespace AutoPharma.Controllers
         // GET: BranchMedicines/Create
         public IActionResult Create()
         {
+            var x = _branchMedicine.GetAllBranchMedicine();
             ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id");
             ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id");
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Id");
@@ -65,8 +66,7 @@ namespace AutoPharma.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(branchMedicine);
-                await _context.SaveChangesAsync();
+                await _branchMedicine.CreateBranchMedicine(branchMedicine);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id", branchMedicine.BranchId);
@@ -83,7 +83,7 @@ namespace AutoPharma.Controllers
                 return NotFound();
             }
 
-            var branchMedicine = await _context.BranchMedicines.FindAsync(id);
+            var branchMedicine = await _branchMedicine.GetBranchMedicine((int)id);
             if (branchMedicine == null)
             {
                 return NotFound();
@@ -110,8 +110,7 @@ namespace AutoPharma.Controllers
             {
                 try
                 {
-                    _context.Update(branchMedicine);
-                    await _context.SaveChangesAsync();
+                    await _branchMedicine.UpdateBranchMedicine(id, branchMedicine);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -140,11 +139,7 @@ namespace AutoPharma.Controllers
                 return NotFound();
             }
 
-            var branchMedicine = await _context.BranchMedicines
-                .Include(b => b.Branch)
-                .Include(b => b.Location)
-                .Include(b => b.Medicine)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var branchMedicine = await _branchMedicine.GetBranchMedicine((int)id);
             if (branchMedicine == null)
             {
                 return NotFound();
@@ -158,15 +153,18 @@ namespace AutoPharma.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var branchMedicine = await _context.BranchMedicines.FindAsync(id);
-            _context.BranchMedicines.Remove(branchMedicine);
-            await _context.SaveChangesAsync();
+            await _branchMedicine.DeleteBranchMedicine(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool BranchMedicineExists(int id)
         {
-            return _context.BranchMedicines.Any(e => e.Id == id);
+            var branchMedicine = _branchMedicine.GetBranchMedicine((int)id);
+            if (branchMedicine == null)
+            {
+                return false;
+            }
+            else return true;
         }
     }
 }
