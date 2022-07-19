@@ -39,6 +39,7 @@ namespace AutoPharma
             services.AddTransient<IBranch, BranchService>();
             services.AddTransient<IMedicine, MedicineService>();
 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
