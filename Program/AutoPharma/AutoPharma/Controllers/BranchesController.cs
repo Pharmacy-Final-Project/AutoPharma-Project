@@ -23,7 +23,7 @@ namespace AutoPharma.Controllers
         // GET: Branches
         public async Task<IActionResult> Index()
         {
-            var branchList= await _branch.GetAllBranches();
+            var branchList = await _branch.GetAllBranches();
             return View(branchList);
         }
 
@@ -97,7 +97,7 @@ namespace AutoPharma.Controllers
             {
                 try
                 {
-                    await _branch.UpdateBranch(id,branch);
+                    await _branch.UpdateBranch(id, branch);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -137,22 +137,22 @@ namespace AutoPharma.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-           
-           await _branch.DeleteBranch(id);
-  
+
+            await _branch.DeleteBranch(id);
+
             return RedirectToAction(nameof(Index));
         }
 
-        private  bool BranchExists(int id)
+        private bool BranchExists(int id)
         {
-            var branch =  _branch.GetBranch((int)id);
+            var branch = _branch.GetBranch((int)id);
             if (branch == null)
             {
                 return false;
             }
             else return true;
 
-            
+
         }
     }
 }
