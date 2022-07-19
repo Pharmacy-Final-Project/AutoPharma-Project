@@ -13,7 +13,7 @@ namespace AutoPharma.Controllers
 {
     public class MedicinesController : Controller
     {
-      
+
         private readonly IMedicine _medicine;
 
         public MedicinesController(IMedicine medicine)
