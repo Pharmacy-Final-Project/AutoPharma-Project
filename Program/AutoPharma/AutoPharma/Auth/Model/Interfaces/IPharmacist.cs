@@ -1,5 +1,7 @@
-﻿using AutoPharma.Auth.Model.DTO;
+﻿using AutoPharma.Auth.Model;
+using AutoPharma.Auth.Model.DTO;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -17,7 +19,7 @@ namespace AutoPharma.Auth.Interfaces
         public Task<UserDTO> GetPharmacist(ClaimsPrincipal principal);
 
         // We will implement these later
-        //public Task<UserDTO> GetAllPharmacists();
+        //public Task<List<PharmacistUser>> GetAllPharmacists();
         //public Task<UserDTO> RemovePharmacist();
         //public Task<UserDTO> MovePharmacistToNewBranch(int cityId, int branchId); //maybe here we need to pass the pharmacist object too
 

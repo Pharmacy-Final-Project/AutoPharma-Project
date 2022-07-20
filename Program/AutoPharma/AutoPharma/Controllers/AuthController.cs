@@ -39,5 +39,28 @@ namespace AutoPharma.Controllers
             await _pharmacist.Logout();
             return Redirect("Home/Index");
         }
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        
+        [HttpPost]
+        public async Task<ActionResult<UserDTO>> SignUp(RegisterDTO register)
+        {
+            var user = await _pharmacist.Register(register, this.ModelState);
+            if (ModelState.IsValid)
+            {
+                await _pharmacist.Authenticate(register.Username, register.Password);
+                return Redirect("/Home/Index");
+
+            }
+            else
+            {
+                return View(register);
+
+            }
+
+        }
     }
 }
