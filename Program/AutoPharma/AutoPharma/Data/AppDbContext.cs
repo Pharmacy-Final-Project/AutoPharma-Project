@@ -11,6 +11,7 @@ namespace AutoPharma.Data
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<BranchMedicine> BranchMedicines { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<City> Cities { get; set; }
 
 
 
@@ -22,8 +23,8 @@ namespace AutoPharma.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Branch>().HasData(
-                new Branch { Id = 1, City = "Amman", Address = "Amman Street", Phone = "1000" },
-                new Branch { Id = 2, City = "Irbid", Address = "Irbid Street", Phone = "2000" }
+                new Branch { Id = 1, cityId = 1, Address = "Amman Street", Phone = "1000" },
+                new Branch { Id = 2, cityId = 3, Address = "Irbid Street", Phone = "2000" }
                 );
 
             modelBuilder.Entity<Medicine>().HasData(
@@ -57,6 +58,22 @@ namespace AutoPharma.Data
                 new BranchMedicine { Id = 3, BranchId = 1, LocationId = 3, MedicineId = 2, Count = 22, OurPrice = 18.45 },
                 new BranchMedicine { Id = 4, BranchId = 2, LocationId = 6, MedicineId = 2, Count = 17, OurPrice = 18.45 }
 
+                );
+
+            modelBuilder.Entity<City>().HasData(
+                new City { Id = 1, Name = "Amman"},
+                new City { Id = 2, Name = "Zarqa"},
+                new City { Id = 3, Name = "Irbid"},
+                new City { Id = 4, Name = "Aqaba"},
+                new City { Id = 5, Name = "Maadaba" },
+                new City { Id = 6, Name = "Al-Balqaa"},
+                new City { Id = 7, Name = "Mafraq" },
+                new City { Id = 8, Name = "Jerash" },
+                new City { Id = 9, Name = "Ma'an" },
+                new City { Id = 10, Name = "Al-Tafila" },
+                new City { Id = 11, Name = "Al-Karak" },
+                new City { Id = 12, Name = "Ajloun"}
+                
                 );
 
         }

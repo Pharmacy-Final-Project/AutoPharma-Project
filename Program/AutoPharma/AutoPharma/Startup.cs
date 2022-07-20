@@ -40,6 +40,7 @@ namespace AutoPharma
             services.AddTransient<IMedicine, MedicineService>();
             services.AddTransient<ILocation, LocationService>();
             services.AddTransient<IBranchMedicine, BranchMedicineService>();
+            services.AddTransient<ICity, CityService>();
 
 
         }
