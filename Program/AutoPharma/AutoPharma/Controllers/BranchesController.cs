@@ -8,21 +8,27 @@ using Microsoft.EntityFrameworkCore;
 using AutoPharma.Data;
 using AutoPharma.Models;
 using AutoPharma.Models.Interfaces;
+using System.Dynamic;
 
 namespace AutoPharma.Controllers
 {
     public class BranchesController : Controller
     {
         private readonly IBranch _branch;
+        private readonly ICity _city;
 
-        public BranchesController(IBranch branch)
+        public BranchesController(IBranch branch, ICity city)
         {
             _branch = branch;
+            _city = city;
+
         }
 
         // GET: Branches
         public async Task<IActionResult> Index()
         {
+
+           
             var branchList = await _branch.GetAllBranches();
             return View(branchList);
         }

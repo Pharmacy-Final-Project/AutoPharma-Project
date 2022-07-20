@@ -6,6 +6,7 @@
         public int MedicineId { get; set; }
         public int BranchId { get; set; }
         public int LocationId { get; set; }
+        public string adress => Branch.Address;
         public int Count { get; set; }
         public double OurPrice { get; set; }
         public string Name => Medicine.Name;

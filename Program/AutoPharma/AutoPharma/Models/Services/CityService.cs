@@ -1,9 +1,11 @@
 ﻿using AutoPharma.Data;
 using AutoPharma.Models.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoPharma.Models.Services
@@ -47,6 +49,8 @@ namespace AutoPharma.Models.Services
               .FirstOrDefaultAsync(m => m.Id == Id);
             return city;
         }
+
+       
 
         public async Task<City> UpdateCity(int Id, City city)
         {
