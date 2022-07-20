@@ -1,8 +1,10 @@
 ﻿using AutoPharma.Data;
+using AutoPharma.Models.DTOs;
 using AutoPharma.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoPharma.Models.Services
@@ -17,11 +19,23 @@ namespace AutoPharma.Models.Services
             _context = context;
         }
 
-        public async Task<Branch> CreateBranch(Branch branch)
+        public async Task<BranchDTO> CreateBranch(Branch branch)
         {
+            //_context.Entry(branch).State = EntityState.Added;
+            //await _context.SaveChangesAsync();
+            //return branch;
+
+            BranchDTO NewBranch = new BranchDTO
+            {
+               Id=branch.Id,
+               Address = branch.Address,
+               Phone = branch.Phone,
+                cityName = _context.Cities.FirstOrDefault(c => c.Id == branch.cityId).Name,
+            };
             _context.Entry(branch).State = EntityState.Added;
             await _context.SaveChangesAsync();
-            return branch;
+            return NewBranch;
+
         }
 
         public async Task DeleteBranch(int Id)
@@ -35,7 +49,16 @@ namespace AutoPharma.Models.Services
 
         public async Task<List<Branch>> GetAllBranches()
         {
-            return await _context.Branches.ToListAsync();
+            //return await _context.Branches.ToListAsync();
+
+            return await _context.Branches.Select(x =>  new Branch {
+                cityName=_context.Cities.FirstOrDefault(c=>c.Id ==x.Id).Name,
+                Address=x.Address,
+                Phone=x.Phone
+
+            
+            }).ToListAsync();
+
         }
 
         public async Task<Branch> GetBranch(int Id)

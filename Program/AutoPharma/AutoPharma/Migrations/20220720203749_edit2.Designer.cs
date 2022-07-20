@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoPharma.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220720052612_CityModel")]
-    partial class CityModel
+    [Migration("20220720203749_edit2")]
+    partial class edit2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace AutoPharma.Migrations
 
                     b.Property<int>("cityId")
                         .HasColumnType("int");
+
+                    b.Property<string>("cityName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -317,11 +320,13 @@ namespace AutoPharma.Migrations
 
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>
                 {
-                    b.HasOne("AutoPharma.Models.City", null)
+                    b.HasOne("AutoPharma.Models.City", "City")
                         .WithMany("Branches")
                         .HasForeignKey("cityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("AutoPharma.Models.BranchMedicine", b =>

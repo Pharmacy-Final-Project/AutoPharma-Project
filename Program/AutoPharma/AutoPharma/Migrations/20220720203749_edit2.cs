@@ -2,7 +2,7 @@
 
 namespace AutoPharma.Migrations
 {
-    public partial class CityModel : Migration
+    public partial class edit2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,6 +57,7 @@ namespace AutoPharma.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     cityId = table.Column<int>(type: "int", nullable: false),
+                    cityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -149,13 +150,13 @@ namespace AutoPharma.Migrations
 
             migrationBuilder.InsertData(
                 table: "Branches",
-                columns: new[] { "Id", "Address", "Phone", "cityId" },
-                values: new object[] { 1, "Amman Street", "1000", 1 });
+                columns: new[] { "Id", "Address", "Phone", "cityId", "cityName" },
+                values: new object[] { 1, "Amman Street", "1000", 1, null });
 
             migrationBuilder.InsertData(
                 table: "Branches",
-                columns: new[] { "Id", "Address", "Phone", "cityId" },
-                values: new object[] { 2, "Irbid Street", "2000", 3 });
+                columns: new[] { "Id", "Address", "Phone", "cityId", "cityName" },
+                values: new object[] { 2, "Irbid Street", "2000", 3, null });
 
             migrationBuilder.InsertData(
                 table: "BranchMedicines",

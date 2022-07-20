@@ -6,6 +6,7 @@ namespace AutoPharma.Models.Interfaces
     public interface ICity
     {
         Task<List<City>> GetAllCities();
+
         Task<City> GetCity(int Id);
         Task DeleteCity(int Id);
         Task<City> CreateCity(City city);
