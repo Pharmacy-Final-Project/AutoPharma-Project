@@ -3,6 +3,8 @@ using AutoPharma.Auth.Model.DTO;
 using AutoPharma.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoPharma.Controllers
@@ -50,6 +52,7 @@ namespace AutoPharma.Controllers
 
             ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address");
 
+
             return View();
         }
 
@@ -57,6 +60,9 @@ namespace AutoPharma.Controllers
         [HttpPost]
         public async Task<ActionResult<UserDTO>> SignUp(RegisterDTO register)
         {
+
+            
+
             var user = await _pharmacist.Register(register, this.ModelState);
             if (ModelState.IsValid)
             {
