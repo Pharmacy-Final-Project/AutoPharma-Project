@@ -50,7 +50,7 @@ namespace AutoPharma.Controllers
         // GET: BranchMedicines/Create
         public IActionResult Create()
         {
-            var x = _branchMedicine.GetAllBranchMedicine();
+            
             ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id");
             ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id");
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Id");
@@ -69,6 +69,7 @@ namespace AutoPharma.Controllers
                 await _branchMedicine.CreateBranchMedicine(branchMedicine);
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id", branchMedicine.BranchId);
             ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id", branchMedicine.LocationId);
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Id", branchMedicine.MedicineId);

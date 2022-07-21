@@ -23,8 +23,8 @@ namespace AutoPharma.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Branch>().HasData(
-                new Branch { Id = 1, cityId = 1, Address = "Amman Street", Phone = "1000" },
-                new Branch { Id = 2, cityId = 3, Address = "Irbid Street", Phone = "2000" }
+                new Branch { Id = 1, CityId = 1, Address = "Amman Street", Phone = "1000" },
+                new Branch { Id = 2, CityId = 3, Address = "Irbid Street", Phone = "2000" }
                 );
 
             modelBuilder.Entity<Medicine>().HasData(

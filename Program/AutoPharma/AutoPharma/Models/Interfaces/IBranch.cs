@@ -1,5 +1,4 @@
-﻿using AutoPharma.Models.DTOs;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AutoPharma.Models.Interfaces
@@ -7,9 +6,9 @@ namespace AutoPharma.Models.Interfaces
     public interface IBranch
     {
         Task<List<Branch>> GetAllBranches();
-        Task<Branch> GetBranch(int Id);
+        Task<Branch> GetBranch(int? Id);
         Task DeleteBranch(int Id);
-        Task<BranchDTO> CreateBranch(Branch branch);
+        Task<Branch> CreateBranch(Branch branch);
         Task<Branch> UpdateBranch(int Id, Branch branch);
 
 

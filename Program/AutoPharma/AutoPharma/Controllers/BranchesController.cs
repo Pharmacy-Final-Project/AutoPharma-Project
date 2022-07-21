@@ -16,11 +16,13 @@ namespace AutoPharma.Controllers
     {
         private readonly IBranch _branch;
         private readonly ICity _city;
+        private readonly AppDbContext _context;
 
-        public BranchesController(IBranch branch, ICity city)
+        public BranchesController(IBranch branch, ICity city, AppDbContext context)
         {
             _branch = branch;
             _city = city;
+            _context = context;
 
         }
 
@@ -41,7 +43,7 @@ namespace AutoPharma.Controllers
                 return NotFound();
             }
 
-            var branch = await _branch.GetBranch((int)id);
+            var branch = await _branch.GetBranch(id);
             if (branch == null)
             {
                 return NotFound();
@@ -53,6 +55,9 @@ namespace AutoPharma.Controllers
         // GET: Branches/Create
         public IActionResult Create()
         {
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+
+
             return View();
         }
 
@@ -68,6 +73,10 @@ namespace AutoPharma.Controllers
                 await _branch.CreateBranch(branch);
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", branch.CityId);
+
+
             return View(branch);
         }
 

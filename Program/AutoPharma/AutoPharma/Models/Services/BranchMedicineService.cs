@@ -43,11 +43,6 @@ namespace AutoPharma.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        //public async List<BranchMedicine> GetAllBranchMediciness()
-        //{
-        //    var AllBranchMedicines = await _context.BranchMedicines.Include(b => b.Branch).Include(b => b.Location).Include(b => b.Medicine).ToListAsync();
-        //    return AllBranchMedicines;
-        //}
 
 
         public async Task<List<BranchMedicine>> GetAllBranchMedicine()

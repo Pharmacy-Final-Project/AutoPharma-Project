@@ -28,18 +28,15 @@ namespace AutoPharma.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("cityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
-                    b.Property<string>("cityName")
+                    b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("cityId");
+                    b.HasIndex("CityId");
 
                     b.ToTable("Branches");
 
@@ -48,15 +45,15 @@ namespace AutoPharma.Migrations
                         {
                             Id = 1,
                             Address = "Amman Street",
-                            Phone = "1000",
-                            cityId = 1
+                            CityId = 1,
+                            Phone = "1000"
                         },
                         new
                         {
                             Id = 2,
                             Address = "Irbid Street",
-                            Phone = "2000",
-                            cityId = 3
+                            CityId = 3,
+                            Phone = "2000"
                         });
                 });
 
@@ -318,13 +315,11 @@ namespace AutoPharma.Migrations
 
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>
                 {
-                    b.HasOne("AutoPharma.Models.City", "City")
+                    b.HasOne("AutoPharma.Models.City", null)
                         .WithMany("Branches")
-                        .HasForeignKey("cityId")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("AutoPharma.Models.BranchMedicine", b =>
