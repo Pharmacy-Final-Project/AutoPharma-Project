@@ -5,8 +5,8 @@ namespace AutoPharma.Auth.Model
 {
     public class PharmacistUser : IdentityUser
     {
-        [Display(Name ="Full Name")]
-        public string FullName { get; set; }
+        //[Display(Name ="Full Name")]
+        //public string FullName { get; set; }
 
         /// <summary>
         /// We will use this to determine which branch the pharmacist work in, or what branch he can edit/manage

@@ -51,9 +51,9 @@ namespace AutoPharma.Controllers
         public IActionResult Create()
         {
             
-            ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id");
+            ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address");
             ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id");
-            ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Id");
+            ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Name");
             return View();
         }
 
@@ -70,9 +70,9 @@ namespace AutoPharma.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id", branchMedicine.BranchId);
+            ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address", branchMedicine.BranchId);
             ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id", branchMedicine.LocationId);
-            ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Id", branchMedicine.MedicineId);
+            ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Name", branchMedicine.MedicineId);
             return View(branchMedicine);
         }
 

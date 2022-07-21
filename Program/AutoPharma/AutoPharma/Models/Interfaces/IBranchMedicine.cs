@@ -11,7 +11,7 @@ namespace AutoPharma.Models.Interfaces
         Task<BranchMedicine> CreateBranchMedicine(BranchMedicine branchMedicine);
         Task<BranchMedicine> UpdateBranchMedicine(int Id, BranchMedicine branchMedicine);
 
-        Task AddMedicineToBranch(int branchId, int medicineId);
+        //Task AddMedicineToBranch(int branchId, int medicineId);
         Task RemoveMedicineFromBranch(int branchId, int medicineId);
     }
 }

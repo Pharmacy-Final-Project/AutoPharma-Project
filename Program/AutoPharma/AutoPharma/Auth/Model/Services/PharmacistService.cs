@@ -27,7 +27,10 @@ namespace AutoPharma.Auth
             var user = new PharmacistUser
             {
                 UserName = registerDto.Username,
-                Email = registerDto.Email
+                Email = registerDto.Email,
+                CityId = registerDto.CityId,
+                BranchId = registerDto.BranchId
+                
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);

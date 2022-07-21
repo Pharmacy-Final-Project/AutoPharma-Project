@@ -66,8 +66,9 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,City,Address,Phone")] Branch branch)
+        public async Task<IActionResult> Create([Bind("Id,CityId,Address,Phone")] Branch branch)
         {
+            
             if (ModelState.IsValid)
             {
                 await _branch.CreateBranch(branch);

@@ -42,8 +42,13 @@ namespace AutoPharma
             {
                 options.User.RequireUniqueEmail = true;
                 // There are other options like this
-            })
-                .AddEntityFrameworkStores<AppDbContext>();
+            }).AddEntityFrameworkStores<AppDbContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/auth/index";
+            });
+
             services.AddAuthentication();
             services.AddAuthorization();
 
@@ -74,6 +79,7 @@ namespace AutoPharma
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

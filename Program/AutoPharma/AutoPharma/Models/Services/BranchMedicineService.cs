@@ -16,16 +16,16 @@ namespace AutoPharma.Models.Services
             _context = context;
         }
 
-        public async Task AddMedicineToBranch(int branchId, int medicineId)
-        {
-            BranchMedicine branchMedicine = new BranchMedicine()
-            {
-                BranchId = branchId,
-                MedicineId = medicineId
-            };
-            _context.Entry(branchMedicine).State = EntityState.Added;
-            await _context.SaveChangesAsync();
-        }
+        //public async Task AddMedicineToBranch(int branchId, int medicineId)
+        //{
+        //    BranchMedicine branchMedicine = new BranchMedicine()
+        //    {
+        //        BranchId = branchId,
+        //        MedicineId = medicineId
+        //    };
+        //    _context.Entry(branchMedicine).State = EntityState.Added;
+        //    await _context.SaveChangesAsync();
+        //}
 
         public async Task<BranchMedicine> CreateBranchMedicine(BranchMedicine branchMedicine)
         {
