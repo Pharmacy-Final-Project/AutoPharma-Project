@@ -1,8 +1,12 @@
+using AutoPharma.Auth;
+using AutoPharma.Auth.Interfaces;
+using AutoPharma.Auth.Model;
 using AutoPharma.Data;
 using AutoPharma.Models.Interfaces;
 using AutoPharma.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,7 +38,16 @@ namespace AutoPharma
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
+            services.AddIdentity<PharmacistUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                // There are other options like this
+            })
+                .AddEntityFrameworkStores<AppDbContext>();
+            services.AddAuthentication();
+            services.AddAuthorization();
 
+            services.AddTransient<IPharmacist, PharmacistService>();
 
             services.AddTransient<IBranch, BranchService>();
             services.AddTransient<IMedicine, MedicineService>();

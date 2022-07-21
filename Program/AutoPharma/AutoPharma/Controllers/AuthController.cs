@@ -14,11 +14,14 @@ namespace AutoPharma.Controllers
             _pharmacist = pharmacist;
         }
 
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
         public IActionResult Index()
         {
             return View();
         }
-
         /// <summary>
         /// Will be called by the pharmacist to log into the system
         /// </summary>
@@ -37,7 +40,8 @@ namespace AutoPharma.Controllers
         public async Task<IActionResult> Logout()
         {
             await _pharmacist.Logout();
-            return Redirect("Home/Index");
+          
+            return RedirectToAction("Index", "Home");
         }
         public IActionResult SignUp()
         {
