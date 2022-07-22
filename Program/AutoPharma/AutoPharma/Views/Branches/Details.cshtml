@@ -7,16 +7,15 @@
 
 <h1>Details</h1>
 
+<h6> Fixes in this page</h6>
+<p>implement full name for users, instead of usernames</p>
+<p>make it available to change pharmacist branch or remove him from the branch</p>
+
 <div>
     <h4>Branch</h4>
     <hr />
     <dl class="row">
-        @*<dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City.Name)
-        </dd>*@
+        
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
@@ -48,42 +47,54 @@
             {
                 <tr>
                     <td>
-                    @Html.DisplayFor(x => item.Medicine.Name)
+                        @Html.DisplayFor(x => item.Medicine.Name)
                     </td>
                     <td>
-                     @Html.DisplayFor(x => item.Count)
+                         @Html.DisplayFor(x => item.Count)
+                    </td>
+                    <td>
+                        <a asp-controller="Medicines" asp-action="Details" asp-route-id="@item.MedicineId">Medicine Info</a>
+                    </td>
+                    <td>
+                        <a asp-controller="BranchMedicines" asp-action="Details" asp-route-id="@item.Id">Branch Medicine Info</a>
                     </td>
                 </tr>
+                
+                
             }
             </tbody>
         </table>
 
 
         <h3>Branch Pharmacists: </h3>
+        <p> Total Pharmacists in this Branch: @Model.Pharmacists.Count</p>
     <table class="table table-striped"> 
-            @*<thead>
+            <thead>
                 <tr>
                     <th>
-                        Medicine Name:
+                        Pharmacist Name:
                     </th>
                     <th>
-                        Count:
+                        Email: 
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.BranchMedicines)
+                @foreach (var pharmacist in Model.Pharmacists)
             {
                 <tr>
                     <td>
-                    @Html.DisplayFor(x => item.Medicine.Name)
+                    @Html.DisplayFor(x => pharmacist.UserName)
                     </td>
                     <td>
-                     @Html.DisplayFor(x => item.Count)
+                     @Html.DisplayFor(x => pharmacist.Email)
+                    </td>
+                    <td>
+                         edit/delete/details
                     </td>
                 </tr>
             }
-            </tbody>*@
+            </tbody>
         </table>
 
 

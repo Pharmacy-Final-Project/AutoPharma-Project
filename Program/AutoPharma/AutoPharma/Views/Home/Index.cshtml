@@ -1,8 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model AutoPharma.Auth.Model.PharmacistUser
+
+@{
+    Layout = "_Layout";
+    @if (@Model != null)
+    {
+        ViewData["Bool"] = true;
+        ViewData["Title"] = @Model.BranchId;
+    }
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+    
+
+
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

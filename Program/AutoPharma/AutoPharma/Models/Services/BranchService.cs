@@ -1,5 +1,7 @@
-﻿using AutoPharma.Data;
+﻿using AutoPharma.Auth.Model;
+using AutoPharma.Data;
 using AutoPharma.Models.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -11,13 +13,15 @@ namespace AutoPharma.Models.Services
     public class BranchService : IBranch
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<PharmacistUser> _userManager;
 
         IConfiguration _configration;
 
-        public BranchService(AppDbContext context, IConfiguration configuration)
+        public BranchService(AppDbContext context, IConfiguration configuration, UserManager<PharmacistUser> userManager)
         {
             _configration = configuration;
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<Branch> CreateBranch(Branch branch)
@@ -72,6 +76,12 @@ namespace AutoPharma.Models.Services
                  .Include(n => n.BranchMedicines)
                  .ThenInclude(x => x.Medicine)
                  .FirstOrDefaultAsync(m => m.Id == Id);
+
+
+            branch.Pharmacists = await _userManager.Users
+                .Where(u => u.BranchId == Id)
+                .ToListAsync();
+            
             return branch;
         }
 

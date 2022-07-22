@@ -77,20 +77,6 @@ namespace AutoPharma.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LoginDTO",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LoginDTO", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Medicines",
                 columns: table => new
                 {
@@ -104,23 +90,6 @@ namespace AutoPharma.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Medicines", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RegisterDTO",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CityId = table.Column<int>(type: "int", nullable: false),
-                    BranchId = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RegisterDTO", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -285,6 +254,29 @@ namespace AutoPharma.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Pharmacists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CityId = table.Column<int>(type: "int", nullable: false),
+                    BranchId = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pharmacists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pharmacists_Branches_BranchId",
+                        column: x => x.BranchId,
+                        principalTable: "Branches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Cities",
                 columns: new[] { "Id", "Name" },
@@ -405,6 +397,11 @@ namespace AutoPharma.Migrations
                 name: "IX_BranchMedicines_MedicineId",
                 table: "BranchMedicines",
                 column: "MedicineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pharmacists_BranchId",
+                table: "Pharmacists",
+                column: "BranchId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -428,10 +425,7 @@ namespace AutoPharma.Migrations
                 name: "BranchMedicines");
 
             migrationBuilder.DropTable(
-                name: "LoginDTO");
-
-            migrationBuilder.DropTable(
-                name: "RegisterDTO");
+                name: "Pharmacists");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -440,13 +434,13 @@ namespace AutoPharma.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Branches");
-
-            migrationBuilder.DropTable(
                 name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "Medicines");
+
+            migrationBuilder.DropTable(
+                name: "Branches");
 
             migrationBuilder.DropTable(
                 name: "Cities");
