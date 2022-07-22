@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoPharma.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220721084519_init")]
+    [Migration("20220722125338_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,26 +20,6 @@ namespace AutoPharma.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("AutoPharma.Auth.Model.DTO.LoginDTO", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LoginDTO");
-                });
 
             modelBuilder.Entity("AutoPharma.Auth.Model.DTO.RegisterDTO", b =>
                 {
@@ -68,7 +48,9 @@ namespace AutoPharma.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RegisterDTO");
+                    b.HasIndex("BranchId");
+
+                    b.ToTable("Pharmacists");
                 });
 
             modelBuilder.Entity("AutoPharma.Auth.Model.PharmacistUser", b =>
@@ -568,6 +550,15 @@ namespace AutoPharma.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AutoPharma.Auth.Model.DTO.RegisterDTO", b =>
+                {
+                    b.HasOne("AutoPharma.Models.Branch", null)
+                        .WithMany("Pharmacists")
+                        .HasForeignKey("BranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>
                 {
                     b.HasOne("AutoPharma.Models.City", null)
@@ -658,6 +649,8 @@ namespace AutoPharma.Migrations
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>
                 {
                     b.Navigation("BranchMedicines");
+
+                    b.Navigation("Pharmacists");
                 });
 
             modelBuilder.Entity("AutoPharma.Models.City", b =>

@@ -4,7 +4,19 @@
     ViewData["Title"] = "SignUp";
 }
 
-<h1>SignUp</h1>
+<h1>Create new pharmacist</h1>
+<p id="demo"></p>
+<button id="myBtn">Refresh</button>
+
+<script>
+    document.getElementById("myBtn").addEventListener("click", displayDate);
+
+    function DisplayDate() {
+        document.getElementById("demo").innerHTML = "HI";
+    }
+
+</script>
+
 
 <hr />
 <div class="row">
@@ -15,10 +27,20 @@
                 <label asp-for="CityId" class="control-label"></label>
                 <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
             </div>
+            
+            
+
             <div class="form-group">
                 <label asp-for="BranchId" class="control-label"></label>
                 <select asp-for="BranchId" class ="form-control" asp-items="ViewBag.BranchId"></select>
             </div>
+
+
+            <div>
+
+            </div>
+
+
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />

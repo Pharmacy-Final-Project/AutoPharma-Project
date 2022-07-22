@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<PharmacistUser> SignInMngr;
 @inject UserManager<PharmacistUser> userManager;
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,17 +46,25 @@
                         </li>
 
 
+                        
+                    @if (@ViewData["Bool"] != null)
+                    {
+                        <a class="nav-link text-dark" asp-controller="Branches" asp-route-id="@ViewData["Title"]" asp-action="Details">My Branch</a>
+                            
+                    }
+
+
                         <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark">@User.Identity.Name</a>
+                                <a class="nav-link text-dark">Hello, @User.Identity.Name !</a>
                             </li>
 
 
                         <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">SignIn</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Sign In</a>
                             </li>
 
 
@@ -73,7 +82,7 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">SignUp</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Create Pharmacist</a>
                         </li>
 
 
