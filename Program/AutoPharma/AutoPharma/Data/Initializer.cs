@@ -13,6 +13,7 @@ namespace AutoPharma.Data
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
+
                 //Roles
                 var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 if (!await roleManager.RoleExistsAsync(Roles.Admin))
@@ -24,24 +25,26 @@ namespace AutoPharma.Data
                 {
                     await roleManager.CreateAsync(new IdentityRole(Roles.Editor));
                 }
+                if (!await roleManager.RoleExistsAsync(Roles.User))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(Roles.User));
+                }
                 //Users
-                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<PharmacistUser>>();
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 // Admin
                 string adminUserEmail = "admin@autopharma.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
                 {
-                    var newAdminUser = new PharmacistUser()
+                    var newAdminUser = new ApplicationUser()
                     {
 
                         UserName = "admin-user",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
-                        BranchId = 1,
-                        CityId = 1,
-                        PhoneNumber = "123456",
-                       
+                        PhoneNumber = "123456"
+
                     };
 
                     await userManager.CreateAsync(newAdminUser, "Admin123!");
@@ -61,13 +64,30 @@ namespace AutoPharma.Data
                         Email = editorUserEmail,
                         EmailConfirmed = true,
                         BranchId = 1,
-                        CityId=1,
-                        PhoneNumber= "12345"
+                        CityId = 1,
+                        PhoneNumber = "12345"
 
 
                     };
                     await userManager.CreateAsync(newEditorUser, "Pharmacist123!");
                     await userManager.AddToRoleAsync(newEditorUser, Roles.Editor);
+
+
+                    string appUserEmail = "User@autopharma.com";
+
+                    var appUser = await userManager.FindByEmailAsync(appUserEmail);
+                    if (appUser == null)
+                    {
+                        var newAppUser = new ApplicationUser()
+                        {
+                            FullName = "Application User",
+                            UserName = "app-user",
+                            Email = appUserEmail,
+                            EmailConfirmed = true
+                        };
+                        await userManager.CreateAsync(newAppUser, "User123!");
+                        await userManager.AddToRoleAsync(newAppUser, Roles.User);
+                    }
                 }
             }
         }

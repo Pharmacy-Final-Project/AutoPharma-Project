@@ -1,6 +1,7 @@
 ﻿using AutoPharma.Auth.Interfaces;
 using AutoPharma.Auth.Model.DTO;
 using AutoPharma.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -9,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace AutoPharma.Controllers
 {
-    public class AuthController : Controller
+    public class AuthPharmacistController : Controller
     {
         private readonly IPharmacist _pharmacist;
         private readonly AppDbContext _context;
 
-        public AuthController(IPharmacist pharmacist, AppDbContext context)
+        public AuthPharmacistController(IPharmacist pharmacist, AppDbContext context)
         {
             _pharmacist = pharmacist;
             _context = context;
@@ -25,12 +26,8 @@ namespace AutoPharma.Controllers
         {
             return View();
         }
-        /// <summary>
-        /// Will be called by the pharmacist to log into the system
-        /// </summary>
-        /// <param name="loginDTO"></param>
-        /// <returns></returns>
-        public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDTO)
+       // [Authorize(Roles = "User")]
+        public async Task<ActionResult<PharmacistUserDTO>> Login(LoginDTO loginDTO)
         {
             //needs error handling
 
@@ -39,6 +36,7 @@ namespace AutoPharma.Controllers
 
             return Redirect("/Home/Index");
         }
+        //[Authorize(Roles = "User")]
 
         public async Task<IActionResult> Logout()
         {
@@ -46,10 +44,14 @@ namespace AutoPharma.Controllers
           
             return RedirectToAction("Index", "Home");
         }
+        //[Authorize(Roles = "User")]
+
         public IActionResult RegisterComplete()
         {
             return View();
         }
+        //[Authorize(Roles = "User")]
+
         public IActionResult SignUp()
         {
             ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
@@ -60,9 +62,10 @@ namespace AutoPharma.Controllers
             return View();
         }
 
-        
+        //[Authorize(Roles = "User")]
+
         [HttpPost]
-        public async Task<ActionResult<UserDTO>> SignUp(RegisterDTO register)
+        public async Task<ActionResult<PharmacistUserDTO>> SignUp(RegisterPharmacistDTO register)
         {
 
             

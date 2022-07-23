@@ -1,6 +1,7 @@
 ﻿using AutoPharma.Auth.Interfaces;
 using AutoPharma.Auth.Model;
 using AutoPharma.Auth.Model.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -12,17 +13,18 @@ namespace AutoPharma.Auth
 {
     public class PharmacistService : IPharmacist
     {
-        private UserManager<PharmacistUser> _userManager;
+        private UserManager<ApplicationUser> _userManager;
 
-        private SignInManager<PharmacistUser> _signInManager;
+        private SignInManager<ApplicationUser> _signInManager;
 
-        public PharmacistService(UserManager<PharmacistUser> userManager, SignInManager<PharmacistUser> SignInMngr)
+        public PharmacistService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> SignInMngr)
         {
 
             _userManager = userManager;
             _signInManager = SignInMngr;
         }
-        public async Task<UserDTO> Register(RegisterDTO registerDto, ModelStateDictionary modelState)
+      //  [Authorize(Roles = "Admin,User")]
+        public async Task<PharmacistUserDTO> Register(RegisterPharmacistDTO registerDto, ModelStateDictionary modelState)
         {
             var user = new PharmacistUser
             {
@@ -38,7 +40,7 @@ namespace AutoPharma.Auth
             if (result.Succeeded)
             {
                 // here goes the roles specifications ... 
-                return new UserDTO
+                return new PharmacistUserDTO
                 {
                     Username = user.UserName,
                 };
@@ -56,7 +58,7 @@ namespace AutoPharma.Auth
             }
             return null;
         }
-        public async Task<UserDTO> Authenticate(string username, string password)
+        public async Task<PharmacistUserDTO> Authenticate(string username, string password)
         {
             // check and map password and user name to log in
             var result = await _signInManager.PasswordSignInAsync(username, password, true, false);
@@ -65,7 +67,7 @@ namespace AutoPharma.Auth
             {
                 // if log in succeed then return the user name
                 var user = await _userManager.FindByNameAsync(username);
-                return new UserDTO
+                return new PharmacistUserDTO
                 {
                     Username = user.UserName
                 };
@@ -74,10 +76,10 @@ namespace AutoPharma.Auth
             return null;
         }
 
-        public async Task<UserDTO> GetPharmacist(ClaimsPrincipal principal)
+        public async Task<PharmacistUserDTO> GetPharmacist(ClaimsPrincipal principal)
         {
             var user = await _userManager.GetUserAsync(principal);
-            return new UserDTO
+            return new PharmacistUserDTO
             {
                 Username = user.UserName
             };

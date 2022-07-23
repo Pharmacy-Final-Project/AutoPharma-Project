@@ -2,10 +2,7 @@
 {
     public class UserDTO
     {
-       
-        public int CityId { get; set; }
-        public int BranchId { get; set; }
+        public int Id { get; set; }
         public string Username { get; set; }
-
     }
 }

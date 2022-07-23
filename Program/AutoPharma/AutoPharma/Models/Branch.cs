@@ -16,6 +16,6 @@ namespace AutoPharma.Models
         //public City City { get; set; }
         public List<BranchMedicine> BranchMedicines { get; set; }
 
-        public List<PharmacistUser> Pharmacists { get; set; }
+        public List<ApplicationUser> Pharmacists { get; set; }
     }
 }

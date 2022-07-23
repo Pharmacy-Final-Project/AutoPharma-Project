@@ -2,7 +2,7 @@
 
 namespace AutoPharma.Auth.Model.DTO
 {
-    public class RegisterDTO
+    public class RegisterPharmacistDTO
     {
         //As an admin, I am registering a pharmacist to a city/branch with email, username & password
 
