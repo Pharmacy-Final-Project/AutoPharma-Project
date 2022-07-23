@@ -1,4 +1,7 @@
 ﻿using AutoPharma.Auth.Model;
+
+using AutoPharma.Auth.Model.DTO;
+
 using System.Collections.Generic;
 
 namespace AutoPharma.Models
@@ -13,7 +16,7 @@ namespace AutoPharma.Models
         public string Phone { get; set; }
 
         //References
-        //public City City { get; set; }
+        
         public List<BranchMedicine> BranchMedicines { get; set; }
 
         public List<PharmacistUser> Pharmacists { get; set; }

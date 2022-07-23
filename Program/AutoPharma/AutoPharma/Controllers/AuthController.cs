@@ -1,6 +1,8 @@
 ﻿using AutoPharma.Auth.Interfaces;
+using AutoPharma.Auth.Model;
 using AutoPharma.Auth.Model.DTO;
 using AutoPharma.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;

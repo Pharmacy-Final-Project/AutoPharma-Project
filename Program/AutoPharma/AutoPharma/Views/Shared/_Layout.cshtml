@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<PharmacistUser> SignInMngr;
 @inject UserManager<PharmacistUser> userManager;
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Aboutus">Aboutus</a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
@@ -65,6 +70,22 @@
 
                             <li class="nav-item">
                                 <a class="nav-link text-dark">Hello @User.Identity.Name</a>
+
+                        
+                    @if (@ViewData["Bool"] != null)
+                    {
+                        <a class="nav-link text-dark" asp-controller="Branches" asp-route-id="@ViewData["Title"]" asp-action="Details">My Branch</a>
+                            
+                    }
+
+
+                        <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">Hello, @User.Identity.Name !</a>
+
                             </li>
                             @if (User.IsInRole("Admin"))
                             {
@@ -76,6 +97,11 @@
 
 
 
+
+
+                        <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Sign In</a>
+                            </li>
 
 
 
@@ -92,6 +118,11 @@
                             }*@
 
 
+
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Create Pharmacist</a>
+                        </li>
 
 
 

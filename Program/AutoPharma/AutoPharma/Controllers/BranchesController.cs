@@ -9,6 +9,8 @@ using AutoPharma.Data;
 using AutoPharma.Models;
 using AutoPharma.Models.Interfaces;
 using System.Dynamic;
+using Microsoft.AspNetCore.Identity;
+using AutoPharma.Auth.Model;
 
 namespace AutoPharma.Controllers
 {
@@ -19,19 +21,16 @@ namespace AutoPharma.Controllers
         private readonly AppDbContext _context;
         
 
-        public BranchesController(IBranch branch, ICity city, AppDbContext context)
+        public BranchesController(IBranch branch, ICity city, AppDbContext context, UserManager<PharmacistUser> userManager)
         {
             _branch = branch;
             _city = city;
             _context = context;
-
         }
       
         // GET: Branches
         public async Task<IActionResult> Index()
         {
-
-           
             var branchList = await _branch.GetAllBranches();
             return View(branchList);
         }

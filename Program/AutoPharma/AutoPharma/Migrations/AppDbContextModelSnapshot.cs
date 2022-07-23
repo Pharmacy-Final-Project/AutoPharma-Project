@@ -19,6 +19,40 @@ namespace AutoPharma.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+
+            modelBuilder.Entity("AutoPharma.Auth.Model.DTO.RegisterDTO", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
+
+                    b.ToTable("Pharmacists");
+                });
+
+
             modelBuilder.Entity("AutoPharma.Auth.Model.PharmacistUser", b =>
                 {
                     b.Property<string>("Id")
@@ -518,7 +552,9 @@ namespace AutoPharma.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+
             modelBuilder.Entity("AutoPharma.Auth.Model.PharmacistUser", b =>
+
                 {
                     b.HasOne("AutoPharma.Models.Branch", null)
                         .WithMany("Pharmacists")

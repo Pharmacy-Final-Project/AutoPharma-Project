@@ -90,11 +90,17 @@ namespace AutoPharma
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}");
             });
             Initializer.SeedUsersAndRolesAsync(app).Wait();
+
+               
+            app.UseStaticFiles();
+
+
         }
     }
 }

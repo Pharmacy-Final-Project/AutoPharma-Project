@@ -15,6 +15,7 @@ namespace AutoPharma.Data
         public DbSet<BranchMedicine> BranchMedicines { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<City> Cities { get; set; }
+        //public DbSet<RegisterDTO> Pharmacists { get; set; }
       
 
 
@@ -26,6 +27,7 @@ namespace AutoPharma.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
 
             modelBuilder.Entity<Branch>().HasData(
                 new Branch { Id = 1, CityId = 1, Address = "Amman Street", Phone = "1000" },
