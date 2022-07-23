@@ -4,7 +4,7 @@ namespace AutoPharma.Auth.Model.DTO
 {
     public class LoginDTO
     {
-        public int Id { get; set; }
+       // public int Id { get; set; }
         [Required(ErrorMessage ="Please Enter Your Username!")]
         public string Username { get; set; }
 

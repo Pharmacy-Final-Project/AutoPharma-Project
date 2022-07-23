@@ -1,5 +1,7 @@
 ﻿using AutoPharma.Auth.Model;
+
 using AutoPharma.Auth.Model.DTO;
+
 using System.Collections.Generic;
 
 namespace AutoPharma.Models

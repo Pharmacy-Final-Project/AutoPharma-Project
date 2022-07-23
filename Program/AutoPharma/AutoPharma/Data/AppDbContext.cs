@@ -28,8 +28,6 @@ namespace AutoPharma.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            
-
 
             modelBuilder.Entity<Branch>().HasData(
                 new Branch { Id = 1, CityId = 1, Address = "Amman Street", Phone = "1000" },
@@ -87,6 +85,6 @@ namespace AutoPharma.Data
 
         }
 
-        
+
     }
 }

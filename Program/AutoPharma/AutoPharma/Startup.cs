@@ -6,6 +6,7 @@ using AutoPharma.Models.Interfaces;
 using AutoPharma.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -41,16 +42,21 @@ namespace AutoPharma
             services.AddIdentity<PharmacistUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
-                // There are other options like this
-            }).AddEntityFrameworkStores<AppDbContext>();
+            })
+           .AddEntityFrameworkStores<AppDbContext>();
 
             services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = "/auth/index";
             });
 
+            services.AddMemoryCache();
+            services.AddMvc();
             services.AddAuthentication();
             services.AddAuthorization();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddSession();
 
             services.AddTransient<IPharmacist, PharmacistService>();
 
@@ -77,18 +83,25 @@ namespace AutoPharma
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
+            Initializer.SeedUsersAndRolesAsync(app).Wait();
+
+               
             app.UseStaticFiles();
+
 
         }
     }
 }
+
