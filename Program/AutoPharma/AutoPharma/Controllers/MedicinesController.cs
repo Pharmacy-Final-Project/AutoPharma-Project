@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoPharma.Data;
 using AutoPharma.Models;
 using AutoPharma.Models.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace AutoPharma.Controllers
 {
@@ -56,11 +57,11 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Dose,MOHPrice,Information")] Medicine medicine)
+        public async Task<IActionResult> Create([Bind("Id,Name,Dose,MOHPrice,Information")] Medicine medicine, IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                await _medicine.CreateMedicine(medicine);
+                await _medicine.CreateMedicine(medicine,file);
                 return RedirectToAction(nameof(Index));
             }
             return View(medicine);
@@ -87,7 +88,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Dose,MOHPrice,Information")] Medicine medicine)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Dose,MOHPrice,Information")] Medicine medicine, IFormFile file)
         {
             if (id != medicine.Id)
             {
@@ -98,7 +99,7 @@ namespace AutoPharma.Controllers
             {
                 try
                 {
-                    await _medicine.UpdateMedicine(id, medicine);
+                    await _medicine.UpdateMedicine(id, medicine,file);
 
                 }
                 catch (DbUpdateConcurrencyException)

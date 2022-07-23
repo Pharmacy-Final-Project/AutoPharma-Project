@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoPharma.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220722125956_m1")]
-    partial class m1
+    [Migration("20220723220928_add-img-blob")]
+    partial class addimgblob
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -355,6 +355,9 @@ namespace AutoPharma.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Dose")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUri")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Information")

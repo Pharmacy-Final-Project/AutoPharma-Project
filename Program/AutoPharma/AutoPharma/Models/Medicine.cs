@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AutoPharma.Models
 {
@@ -7,10 +8,11 @@ namespace AutoPharma.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Dose { get; set; }
+        public Uri ImageUri { get; set; }
+
         //MOH: Ministry of Health
         public double MOHPrice { get; set; }
         public string Information { get; set; }
-        
 
     }
 }

@@ -1,6 +1,10 @@
 ﻿using AutoPharma.Data;
 using AutoPharma.Models.Interfaces;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,13 +14,15 @@ namespace AutoPharma.Models.Services
     public class MedicineService : IMedicine
     {
         private readonly AppDbContext _context;
-
-        public MedicineService(AppDbContext context)
+        IConfiguration _configration;
+        public MedicineService(AppDbContext context,IConfiguration configuration)
         {
             _context = context;
+            _configration = configuration;
         }
-        public async Task<Medicine> CreateMedicine(Medicine medicine)
+        public async Task<Medicine> CreateMedicine(Medicine medicine, IFormFile file)
         {
+            medicine.ImageUri = GetFile(file).Result;
             _context.Entry(medicine).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return medicine;
@@ -43,11 +49,39 @@ namespace AutoPharma.Models.Services
             return medicine;
         }
 
-        public async Task<Medicine> UpdateMedicine(int Id, Medicine medicine)
+        public async Task<Medicine> UpdateMedicine(int Id, Medicine medicine, IFormFile file)
         {
+            if (file != null)
+            {
+                medicine.ImageUri = GetFile(file).Result;
+
+            }
             _context.Entry(medicine).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return medicine;
+        }
+        public async Task<Uri> GetFile(IFormFile file)
+        {
+            if (file == null)
+            {
+                Uri defaultImg = new Uri("https://autopharma.blob.core.windows.net/images/Default.jpg");
+                return defaultImg;
+            }
+            BlobContainerClient container = new BlobContainerClient(_configration.GetConnectionString("AzureBlob"), "images");
+            await container.CreateIfNotExistsAsync();
+            BlobClient blob = container.GetBlobClient(file.FileName);
+
+            using var stream = file.OpenReadStream();
+            BlobUploadOptions options = new BlobUploadOptions()
+            {
+                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+            };
+            if (!blob.Exists())
+            {
+                await blob.UploadAsync(stream, options);
+            }
+            return blob.Uri;
+
         }
     }
 }
