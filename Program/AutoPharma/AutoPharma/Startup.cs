@@ -87,6 +87,8 @@ namespace AutoPharma
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            app.UseStaticFiles();
+
         }
     }
 }
