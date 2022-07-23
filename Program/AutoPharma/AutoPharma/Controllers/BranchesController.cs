@@ -19,6 +19,7 @@ namespace AutoPharma.Controllers
         private readonly IBranch _branch;
         private readonly ICity _city;
         private readonly AppDbContext _context;
+        
 
         public BranchesController(IBranch branch, ICity city, AppDbContext context, UserManager<PharmacistUser> userManager)
         {
@@ -26,7 +27,7 @@ namespace AutoPharma.Controllers
             _city = city;
             _context = context;
         }
-
+      
         // GET: Branches
         public async Task<IActionResult> Index()
         {

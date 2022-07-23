@@ -49,6 +49,27 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cities" asp-action="Index">Cities</a>
                         </li>
 
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Log in</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Sign Up</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Log out</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">Hello @User.Identity.Name</a>
 
                         
                     @if (@ViewData["Bool"] != null)
@@ -64,7 +85,18 @@
 
                             <li class="nav-item">
                                 <a class="nav-link text-dark">Hello, @User.Identity.Name !</a>
+
                             </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Add new pharmacist</a>
+                                </li>
+                            }
+                        }
+
+
+
 
 
                         <li class="nav-item">
@@ -72,22 +104,26 @@
                             </li>
 
 
+
                         @*@if (SignInMngr.IsSignedIn(User))
-                        {
-
-                            
+                            {
 
 
-                        }
-                        else
-                        {
-                            
-                        }*@
+
+
+                            }
+                            else
+                            {
+
+                            }*@
+
+
 
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Create Pharmacist</a>
                         </li>
+
 
 
 

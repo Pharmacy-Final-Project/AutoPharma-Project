@@ -1,34 +1,22 @@
 ﻿@model AutoPharma.Auth.Model.DTO.RegisterDTO
 
 @{
-    ViewData["Title"] = "SignUp";
+    ViewData["Title"] = "Sign Up for a new account";
 }
 
 <h1>Create new pharmacist</h1>
-<p id="demo"></p>
-<button id="myBtn">Refresh</button>
-
-<script>
-    document.getElementById("myBtn").addEventListener("click", displayDate);
-
-    function DisplayDate() {
-        document.getElementById("demo").innerHTML = "HI";
-    }
-
-</script>
-
 
 <hr />
 <div class="row">
     <div class="col-md-4">
+         <p>Sign Up for a new account</p>
         <form asp-action="SignUp">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CityId" class="control-label"></label>
                 <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
-            </div>
-            
-            
+
+            </div>           
 
             <div class="form-group">
                 <label asp-for="BranchId" class="control-label"></label>
@@ -57,7 +45,8 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="SignUp" class="btn btn-primary" />
+                <input type="submit" value="SignUp" class="btn btn-outline-success float-right" />
+             <a class ="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
             </div>
         </form>
     </div>

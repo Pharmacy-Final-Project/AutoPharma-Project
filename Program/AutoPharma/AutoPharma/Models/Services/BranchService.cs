@@ -64,11 +64,11 @@ namespace AutoPharma.Models.Services
             //cityName=_context.Cities.FirstOrDefault(c=>c.Id ==x.Id).Name,
             //Address=x.Address,
             //Phone=x.Phone
-            
+
             //}).ToListAsync();
 
         }
-
+          // return  await _userManager.Users.ToListAsync();
         public async Task<Branch> GetBranch(int? Id)
         {
             var branch = await _context.Branches
