@@ -3,6 +3,7 @@ using AutoPharma.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AutoPharma.Auth.Model.DTO;
+using System;
 
 namespace AutoPharma.Data
 {
@@ -35,8 +36,8 @@ namespace AutoPharma.Data
                 );
 
             modelBuilder.Entity<Medicine>().HasData(
-                new Medicine { Id = 1, Name = "Panadol", Dose = "250", Information = "This medicine is used as a painkiller", MOHPrice = 3.5 },
-                new Medicine { Id = 2, Name = "Penicillin ", Dose = "500", Information = "This medicine is used as a antibiotic", MOHPrice = 17.65 }
+                new Medicine { Id = 1, Name = "Panadol", Dose = "250", Information = "This medicine is used as a painkiller", MOHPrice = 3.5, ImageUri = new Uri("https://autopharma.blob.core.windows.net/images/panadol.jpg") },
+                new Medicine { Id = 2, Name = "Penicillin ", Dose = "500", Information = "This medicine is used as a antibiotic", MOHPrice = 17.65 , ImageUri = new Uri("https://autopharma.blob.core.windows.net/images/Penicillin.jpg") }
 
                 );
 
