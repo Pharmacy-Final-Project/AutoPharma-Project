@@ -83,8 +83,6 @@ namespace AutoPharma.Data
 
         }
 
-        public DbSet<AutoPharma.Auth.Model.DTO.RegisterDTO> RegisterDTO { get; set; }
 
-        public DbSet<AutoPharma.Auth.Model.DTO.LoginDTO> LoginDTO { get; set; }
     }
 }

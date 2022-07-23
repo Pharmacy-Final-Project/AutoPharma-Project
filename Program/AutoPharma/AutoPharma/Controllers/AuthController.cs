@@ -46,6 +46,10 @@ namespace AutoPharma.Controllers
           
             return RedirectToAction("Index", "Home");
         }
+        public IActionResult RegisterComplete()
+        {
+            return View();
+        }
         public IActionResult SignUp()
         {
             ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
@@ -67,7 +71,7 @@ namespace AutoPharma.Controllers
             if (ModelState.IsValid)
             {
                 //await _pharmacist.Authenticate(register.Username, register.Password);
-                return Redirect("/Home/Index");
+                return Redirect("/Auth/RegisterComplete");
 
             }
             else

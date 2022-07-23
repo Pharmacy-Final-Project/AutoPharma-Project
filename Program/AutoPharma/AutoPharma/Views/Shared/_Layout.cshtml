@@ -44,37 +44,55 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cities" asp-action="Index">Cities</a>
                         </li>
 
-
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark">@User.Identity.Name</a>
-                            </li>
-
-
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">SignIn</a>
-                            </li>
-
-
-                        @*@if (SignInMngr.IsSignedIn(User))
+                        @if (!User.Identity.IsAuthenticated)
                         {
-
-                            
-
-
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Log in</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Sign Up</a>
+                                </li>
+                            }
                         }
                         else
                         {
-                            
-                        }*@
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Log out</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">Hello @User.Identity.Name</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Add new pharmacist</a>
+                                </li>
+                            }
+                        }
 
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">SignUp</a>
-                        </li>
+
+
+
+
+                        @*@if (SignInMngr.IsSignedIn(User))
+                            {
+
+
+
+
+                            }
+                            else
+                            {
+
+                            }*@
+
+
+
 
 
 

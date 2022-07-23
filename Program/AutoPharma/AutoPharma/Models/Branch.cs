@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AutoPharma.Auth.Model;
+using System.Collections.Generic;
 
 namespace AutoPharma.Models
 {
@@ -15,6 +16,6 @@ namespace AutoPharma.Models
         //public City City { get; set; }
         public List<BranchMedicine> BranchMedicines { get; set; }
 
-        //public List<Pharmacist> Pharmacists { get; set; }
+        public List<PharmacistUser> Pharmacists { get; set; }
     }
 }
