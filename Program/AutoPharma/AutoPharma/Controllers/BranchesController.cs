@@ -21,7 +21,7 @@ namespace AutoPharma.Controllers
         private readonly AppDbContext _context;
         
 
-        public BranchesController(IBranch branch, ICity city, AppDbContext context, UserManager<PharmacistUser> userManager)
+        public BranchesController(IBranch branch, ICity city, AppDbContext context, UserManager<ApplicationUser> userManager)
         {
             _branch = branch;
             _city = city;

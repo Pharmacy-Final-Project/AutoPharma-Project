@@ -10,22 +10,23 @@ using System.Threading.Tasks;
 
 namespace AutoPharma.Auth
 {
-    public class PharmacistService : IPharmacist
+    public class PharmacistService : IUser
     {
-        private UserManager<PharmacistUser> _userManager;
+        private UserManager<ApplicationUser> _userManager;
 
-        private SignInManager<PharmacistUser> _signInManager;
+        private SignInManager<ApplicationUser> _signInManager;
 
-        public PharmacistService(UserManager<PharmacistUser> userManager, SignInManager<PharmacistUser> SignInMngr)
+        public PharmacistService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> SignInMngr)
         {
 
             _userManager = userManager;
             _signInManager = SignInMngr;
         }
-        public async Task<UserDTO> Register(RegisterDTO registerDto, ModelStateDictionary modelState)
+        public async Task<PharmacistUserDTO> Register(PharmacistRegisterDTO registerDto, ModelStateDictionary modelState)
         {
-            var user = new PharmacistUser
+            var user = new ApplicationUser
             {
+                FullName=registerDto.FullName,
                 UserName = registerDto.Username,
                 Email = registerDto.Email,
                 CityId = registerDto.CityId,
@@ -34,11 +35,11 @@ namespace AutoPharma.Auth
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
-
+            // role   await userManager.AddToRoleAsync(newAdminUser, Roles.Admin);
             if (result.Succeeded)
             {
                 // here goes the roles specifications ... 
-                return new UserDTO
+                return new PharmacistUserDTO
                 {
                     Username = user.UserName,
                 };
@@ -74,10 +75,10 @@ namespace AutoPharma.Auth
             return null;
         }
 
-        public async Task<UserDTO> GetPharmacist(ClaimsPrincipal principal)
+        public async Task<PharmacistUserDTO> GetPharmacist(ClaimsPrincipal principal)
         {
             var user = await _userManager.GetUserAsync(principal);
-            return new UserDTO
+            return new PharmacistUserDTO
             {
                 Username = user.UserName
             };

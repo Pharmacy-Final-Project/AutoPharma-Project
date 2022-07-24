@@ -57,7 +57,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Dose,MOHPrice,Information")] Medicine medicine, IFormFile file)
+        public async Task<IActionResult> Create([Bind("Id,Name,Dose,MOHPrice,Information,ImageUri")] Medicine medicine, IFormFile file)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Dose,MOHPrice,Information")] Medicine medicine, IFormFile file)
+        public async Task<IActionResult> Edit(int id,Medicine medicine, IFormFile file)
         {
             if (id != medicine.Id)
             {

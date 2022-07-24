@@ -13,10 +13,10 @@ namespace AutoPharma.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IPharmacist _pharmacist;
+        private readonly IUser _pharmacist;
         private readonly AppDbContext _context;
 
-        public AuthController(IPharmacist pharmacist, AppDbContext context)
+        public AuthController(IUser pharmacist, AppDbContext context)
         {
             _pharmacist = pharmacist;
             _context = context;
@@ -32,7 +32,7 @@ namespace AutoPharma.Controllers
         /// </summary>
         /// <param name="loginDTO"></param>
         /// <returns></returns>
-        public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDTO)
+        public async Task<ActionResult<PharmacistUserDTO>> Login(LoginDTO loginDTO)
         {
             //needs error handling
 
@@ -64,7 +64,7 @@ namespace AutoPharma.Controllers
 
         
         [HttpPost]
-        public async Task<ActionResult<UserDTO>> SignUp(RegisterDTO register)
+        public async Task<ActionResult<PharmacistUserDTO>> SignUp(PharmacistRegisterDTO register)
         {
 
             

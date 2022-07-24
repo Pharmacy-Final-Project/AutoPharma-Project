@@ -19,7 +19,7 @@ namespace AutoPharma.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AutoPharma.Auth.Model.PharmacistUser", b =>
+            modelBuilder.Entity("AutoPharma.Auth.Model.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -43,6 +43,9 @@ namespace AutoPharma.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -528,7 +531,7 @@ namespace AutoPharma.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AutoPharma.Auth.Model.PharmacistUser", b =>
+            modelBuilder.Entity("AutoPharma.Auth.Model.ApplicationUser", b =>
                 {
                     b.HasOne("AutoPharma.Models.Branch", null)
                         .WithMany("Pharmacists")
@@ -584,7 +587,7 @@ namespace AutoPharma.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("AutoPharma.Auth.Model.PharmacistUser", null)
+                    b.HasOne("AutoPharma.Auth.Model.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -593,7 +596,7 @@ namespace AutoPharma.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("AutoPharma.Auth.Model.PharmacistUser", null)
+                    b.HasOne("AutoPharma.Auth.Model.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -608,7 +611,7 @@ namespace AutoPharma.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AutoPharma.Auth.Model.PharmacistUser", null)
+                    b.HasOne("AutoPharma.Auth.Model.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -617,7 +620,7 @@ namespace AutoPharma.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("AutoPharma.Auth.Model.PharmacistUser", null)
+                    b.HasOne("AutoPharma.Auth.Model.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
