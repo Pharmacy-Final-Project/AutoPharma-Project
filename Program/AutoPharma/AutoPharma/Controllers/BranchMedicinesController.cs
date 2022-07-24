@@ -46,11 +46,24 @@ namespace AutoPharma.Controllers
 
             return View(branchMedicine);
         }
+        public async Task<IActionResult> ChooseCity()
+        {
+
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+            return View();
+        }
+       
+        public async Task<IActionResult> ChooseBranch(int id)
+        {
+
+            ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address");
+            return View();
+        }
 
         // GET: BranchMedicines/Create
         public IActionResult Create()
         {
-            
+
             ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address");
             ViewData["LocationId"] = new SelectList(_context.Locations, "Id", "Id");
             ViewData["MedicineId"] = new SelectList(_context.Medicines, "Id", "Name");
@@ -167,5 +180,6 @@ namespace AutoPharma.Controllers
             }
             else return true;
         }
+
     }
 }

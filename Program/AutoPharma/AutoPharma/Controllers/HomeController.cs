@@ -30,7 +30,7 @@ namespace AutoPharma.Controllers
 
             return View(pharmacist);
 
-            return View();
+          
         }
 
         public IActionResult Privacy()

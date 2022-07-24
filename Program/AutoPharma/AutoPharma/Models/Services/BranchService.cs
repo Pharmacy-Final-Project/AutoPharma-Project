@@ -91,5 +91,12 @@ namespace AutoPharma.Models.Services
             await _context.SaveChangesAsync();
             return branch;
         }
+      
+        //public async Task<List<BranchMedicine>> Search(string text, int branchId)
+        //{
+
+        //    var result = await _context.BranchMedicines.Include(m => m.Medicine).Where(b => b.BranchId == branchId && (b.Medicine.Name.Contains(text) || b.Medicine.Information.Contains(text))).ToListAsync();
+        //    return result;
+        //}
     }
 }

@@ -51,6 +51,7 @@ namespace AutoPharma.Controllers
 
             return View(branch);
         }
+      
 
         // GET: Branches/Create
         public IActionResult Create()
@@ -170,5 +171,10 @@ namespace AutoPharma.Controllers
 
 
         }
+        //public async Task<IActionResult> Search(string text, int BranchId)
+        //{
+        //    var result = _branch.Search(text, BranchId);
+        //    return View("Details", result);
+        //}
     }
 }

@@ -15,42 +15,52 @@
     <h4>Branch</h4>
     <hr />
     <dl class="row">
-        
-        <dt class = "col-sm-2">
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Address)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Phone)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Phone)
         </dd>
     </dl>
 
     <h3>Branch Medicines: </h3>
-    <table class="table table-striped"> 
-            <thead>
-                <tr>
-                    <th>
-                        Medicine Name:
-                    </th>
-                    <th>
-                        Count:
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.BranchMedicines)
+    <p>
+        @using(Html.BeginForm("Details","Branch",FormMethod.Get))
+        {
+        <b>Search For Medicine by Name or Information</b>
+        <br />
+        @Html.TextBox("Search") <input type="submit" value="Search" />
+
+        }
+
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Medicine Name:
+                </th>
+                <th>
+                    Count:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BranchMedicines)
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(x => item.Medicine.Name)
                     </td>
                     <td>
-                         @Html.DisplayFor(x => item.Count)
+                        @Html.DisplayFor(x => item.Count)
                     </td>
                     <td>
                         <a asp-controller="Medicines" asp-action="Details" asp-route-id="@item.MedicineId">Medicine Info</a>
@@ -59,43 +69,43 @@
                         <a asp-controller="BranchMedicines" asp-action="Details" asp-route-id="@item.Id">Branch Medicine Info</a>
                     </td>
                 </tr>
-                
-                
+
+
             }
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
 
-        <h3>Branch Pharmacists: </h3>
-        <p> Total Pharmacists in this Branch: @Model.Pharmacists.Count</p>
-    <table class="table table-striped"> 
-            <thead>
-                <tr>
-                    <th>
-                        Pharmacist Name:
-                    </th>
-                    <th>
-                        Email: 
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var pharmacist in Model.Pharmacists)
+    <h3>Branch Pharmacists: </h3>
+    <p> Total Pharmacists in this Branch: @Model.Pharmacists.Count</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Pharmacist Name:
+                </th>
+                <th>
+                    Email:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pharmacist in Model.Pharmacists)
             {
                 <tr>
                     <td>
-                    @Html.DisplayFor(x => pharmacist.FullName)
+                        @Html.DisplayFor(x => pharmacist.FullName)
                     </td>
                     <td>
-                     @Html.DisplayFor(x => pharmacist.Email)
+                        @Html.DisplayFor(x => pharmacist.Email)
                     </td>
                     <td>
-                         edit/delete/details
+                        edit/delete/details
                     </td>
                 </tr>
             }
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
 
 </div>

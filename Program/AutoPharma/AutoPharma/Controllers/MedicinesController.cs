@@ -28,6 +28,7 @@ namespace AutoPharma.Controllers
             var medicineList = await _medicine.GetAllMedicine();
             return View(medicineList);
         }
+        
 
         // GET: Medicines/Details/5
         public async Task<IActionResult> Details(int? id)
