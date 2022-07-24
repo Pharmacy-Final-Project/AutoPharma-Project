@@ -7,7 +7,7 @@ using System;
 
 namespace AutoPharma.Data
 {
-    public class AppDbContext : IdentityDbContext<PharmacistUser>
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         //Tables in my database
 

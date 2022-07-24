@@ -13,11 +13,11 @@ namespace AutoPharma.Models.Services
     public class BranchService : IBranch
     {
         private readonly AppDbContext _context;
-        private readonly UserManager<PharmacistUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         IConfiguration _configration;
 
-        public BranchService(AppDbContext context, IConfiguration configuration, UserManager<PharmacistUser> userManager)
+        public BranchService(AppDbContext context, IConfiguration configuration, UserManager<ApplicationUser> userManager)
         {
             _configration = configuration;
             _context = context;

@@ -19,6 +19,6 @@ namespace AutoPharma.Models
         
         public List<BranchMedicine> BranchMedicines { get; set; }
 
-        public List<PharmacistUser> Pharmacists { get; set; }
+        public List<ApplicationUser> Pharmacists { get; set; }
     }
 }

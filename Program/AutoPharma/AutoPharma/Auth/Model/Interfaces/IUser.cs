@@ -7,16 +7,18 @@ using System.Threading.Tasks;
 
 namespace AutoPharma.Auth.Interfaces
 {
-    public interface IPharmacist
+    public interface IUser
     {
         // These functions will be called by the pharmasist himself
         public Task<UserDTO> Authenticate(string username, string password);
         public Task Logout();
 
         // These functions will be called by the admin to manage pharmacists
-        public Task<UserDTO> Register(RegisterDTO registerData, ModelStateDictionary modelState);
+        public Task<PharmacistUserDTO> Register(PharmacistRegisterDTO registerData, ModelStateDictionary modelState);
 
-        public Task<UserDTO> GetPharmacist(ClaimsPrincipal principal);
+        public Task<PharmacistUserDTO> GetPharmacist(ClaimsPrincipal principal);
+       
+
 
         // We will implement these later
         //public Task<List<PharmacistUser>> GetAllPharmacists();

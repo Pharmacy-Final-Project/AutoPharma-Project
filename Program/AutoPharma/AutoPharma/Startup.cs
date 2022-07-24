@@ -39,7 +39,7 @@ namespace AutoPharma
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
-            services.AddIdentity<PharmacistUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
             })
@@ -58,7 +58,7 @@ namespace AutoPharma
 
             services.AddSession();
 
-            services.AddTransient<IPharmacist, PharmacistService>();
+            services.AddTransient<IUser, PharmacistService>();
 
             services.AddTransient<IBranch, BranchService>();
             services.AddTransient<IMedicine, MedicineService>();

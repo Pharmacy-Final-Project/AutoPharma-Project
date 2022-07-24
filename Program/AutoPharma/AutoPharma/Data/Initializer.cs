@@ -25,22 +25,22 @@ namespace AutoPharma.Data
                     await roleManager.CreateAsync(new IdentityRole(Roles.Editor));
                 }
                 //Users
-                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<PharmacistUser>>();
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 // Admin
                 string adminUserEmail = "admin@autopharma.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
                 {
-                    var newAdminUser = new PharmacistUser()
+                    var newAdminUser = new ApplicationUser()
                     {
 
                         UserName = "admin-user",
                         Email = adminUserEmail,
-                        EmailConfirmed = true,
-                        BranchId = 1,
-                        CityId = 1,
-                        PhoneNumber = "123456",
+                        EmailConfirmed = true
+                        //BranchId = 1,
+                        //CityId = 1,
+                        //PhoneNumber = "123456",
                        
                     };
 
@@ -54,7 +54,7 @@ namespace AutoPharma.Data
                 var editorUser = await userManager.FindByEmailAsync(editorUserEmail);
                 if (editorUser == null)
                 {
-                    var newEditorUser = new PharmacistUser()
+                    var newEditorUser = new ApplicationUser()
                     {
 
                         UserName = "PharmacistUser-user",

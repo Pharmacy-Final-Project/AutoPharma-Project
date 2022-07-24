@@ -14,10 +14,10 @@ namespace AutoPharma.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly UserManager<PharmacistUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
 
-        public HomeController(ILogger<HomeController> logger, UserManager<PharmacistUser> userManager)
+        public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _userManager = userManager;
@@ -26,7 +26,7 @@ namespace AutoPharma.Controllers
         public IActionResult Index()
         {
             var userId = _userManager.GetUserId(HttpContext.User);
-            PharmacistUser pharmacist = _userManager.FindByIdAsync(userId).Result;
+            ApplicationUser pharmacist = _userManager.FindByIdAsync(userId).Result;
 
             return View(pharmacist);
 
