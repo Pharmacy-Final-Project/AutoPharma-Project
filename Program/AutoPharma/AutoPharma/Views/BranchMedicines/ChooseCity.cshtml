@@ -1,4 +1,4 @@
-﻿@model AutoPharma.Models.Branch
+﻿@model City
 
 @{
     ViewData["Title"] = "Choose a city";
@@ -8,14 +8,48 @@
 <h1>Choose a city</h1>
 
 
-<hr />
+
+
+
+
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="BranchMedicines" asp-action="ChooseCity">
           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+            <select asp-for="Id" class ="form-control" asp-items="ViewBag.Id">
+
+            </select>
+
+            </div>   
+
+           
+            <div class="form-group">
+                <input type="submit" value="Next" class="btn btn-outline-success float-right" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<hr />
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="BranchMedicines" asp-action="ChooseCity">
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
                 <label asp-for="CityId" class="control-label"> City Name</label>
-                <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
+                <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId">
+                </select>
 
             </div>   
 
@@ -25,7 +59,7 @@
             </td>
         </form>
     </div>
-</div>
+</div>*@
 
 <div>
     <a asp-action="Index">Back to List</a>

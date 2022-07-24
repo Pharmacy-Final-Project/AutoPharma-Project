@@ -37,10 +37,10 @@ namespace AutoPharma.Data
 
                         UserName = "admin-user",
                         Email = adminUserEmail,
-                        EmailConfirmed = true
-                        //BranchId = 1,
-                        //CityId = 1,
-                        //PhoneNumber = "123456",
+                        EmailConfirmed = true,
+                        BranchId = 1,
+                        CityId = 1,
+                        PhoneNumber = "123456",
                        
                     };
 

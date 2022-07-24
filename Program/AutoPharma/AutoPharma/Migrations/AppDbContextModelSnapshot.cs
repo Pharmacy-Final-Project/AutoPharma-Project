@@ -128,9 +128,72 @@ namespace AutoPharma.Migrations
                         new
                         {
                             Id = 2,
+                            Address = "Abdon",
+                            CityId = 1,
+                            Phone = "1200"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Marka",
+                            CityId = 1,
+                            Phone = "1300"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Sweleh",
+                            CityId = 1,
+                            Phone = "1400"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Al-sabea",
+                            CityId = 1,
+                            Phone = "1500"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "Al-thamin",
+                            CityId = 1,
+                            Phone = "1600"
+                        },
+                        new
+                        {
+                            Id = 7,
                             Address = "Irbid Street",
                             CityId = 3,
-                            Phone = "2000"
+                            Phone = "2100"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Address = "Albalad",
+                            CityId = 3,
+                            Phone = "2200"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Address = "AL-ramtha",
+                            CityId = 3,
+                            Phone = "2300"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Address = "Sal",
+                            CityId = 3,
+                            Phone = "2400"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Address = "Irbid Street",
+                            CityId = 3,
+                            Phone = "2500"
                         });
                 });
 
@@ -189,19 +252,379 @@ namespace AutoPharma.Migrations
                         {
                             Id = 3,
                             BranchId = 1,
-                            Count = 22,
-                            LocationId = 3,
-                            MedicineId = 2,
-                            OurPrice = 18.449999999999999
+                            Count = 99,
+                            LocationId = 6,
+                            MedicineId = 3,
+                            OurPrice = 4.9500000000000002
                         },
                         new
                         {
                             Id = 4,
                             BranchId = 2,
-                            Count = 17,
+                            Count = 55,
+                            LocationId = 2,
+                            MedicineId = 3,
+                            OurPrice = 4.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BranchId = 4,
+                            Count = 55,
+                            LocationId = 5,
+                            MedicineId = 3,
+                            OurPrice = 4.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BranchId = 1,
+                            Count = 85,
+                            LocationId = 2,
+                            MedicineId = 3,
+                            OurPrice = 4.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BranchId = 11,
+                            Count = 53,
+                            LocationId = 1,
+                            MedicineId = 9,
+                            OurPrice = 9.8000000000000007
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BranchId = 5,
+                            Count = 73,
+                            LocationId = 8,
+                            MedicineId = 9,
+                            OurPrice = 9.8000000000000007
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BranchId = 3,
+                            Count = 76,
+                            LocationId = 4,
+                            MedicineId = 9,
+                            OurPrice = 9.8000000000000007
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BranchId = 9,
+                            Count = 13,
+                            LocationId = 9,
+                            MedicineId = 9,
+                            OurPrice = 9.8000000000000007
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BranchId = 1,
+                            Count = 73,
+                            LocationId = 1,
+                            MedicineId = 8,
+                            OurPrice = 1.1000000000000001
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BranchId = 4,
+                            Count = 55,
+                            LocationId = 6,
+                            MedicineId = 8,
+                            OurPrice = 1.1000000000000001
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BranchId = 2,
+                            Count = 66,
+                            LocationId = 5,
+                            MedicineId = 8,
+                            OurPrice = 1.1000000000000001
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BranchId = 7,
+                            Count = 44,
+                            LocationId = 3,
+                            MedicineId = 8,
+                            OurPrice = 1.1000000000000001
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BranchId = 1,
+                            Count = 76,
+                            LocationId = 1,
+                            MedicineId = 7,
+                            OurPrice = 4.7000000000000002
+                        },
+                        new
+                        {
+                            Id = 16,
+                            BranchId = 6,
+                            Count = 88,
+                            LocationId = 2,
+                            MedicineId = 7,
+                            OurPrice = 4.7000000000000002
+                        },
+                        new
+                        {
+                            Id = 17,
+                            BranchId = 3,
+                            Count = 63,
+                            LocationId = 3,
+                            MedicineId = 7,
+                            OurPrice = 4.7000000000000002
+                        },
+                        new
+                        {
+                            Id = 18,
+                            BranchId = 4,
+                            Count = 56,
+                            LocationId = 4,
+                            MedicineId = 7,
+                            OurPrice = 4.7000000000000002
+                        },
+                        new
+                        {
+                            Id = 19,
+                            BranchId = 1,
+                            Count = 44,
+                            LocationId = 1,
+                            MedicineId = 6,
+                            OurPrice = 2.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 20,
+                            BranchId = 2,
+                            Count = 85,
+                            LocationId = 6,
+                            MedicineId = 6,
+                            OurPrice = 2.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 21,
+                            BranchId = 7,
+                            Count = 3,
+                            LocationId = 8,
+                            MedicineId = 6,
+                            OurPrice = 2.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 22,
+                            BranchId = 8,
+                            Count = 6,
+                            LocationId = 2,
+                            MedicineId = 6,
+                            OurPrice = 2.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 23,
+                            BranchId = 1,
+                            Count = 99,
+                            LocationId = 1,
+                            MedicineId = 5,
+                            OurPrice = 1.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 24,
+                            BranchId = 4,
+                            Count = 53,
+                            LocationId = 2,
+                            MedicineId = 5,
+                            OurPrice = 1.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 25,
+                            BranchId = 2,
+                            Count = 44,
+                            LocationId = 3,
+                            MedicineId = 5,
+                            OurPrice = 1.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 26,
+                            BranchId = 3,
+                            Count = 66,
+                            LocationId = 5,
+                            MedicineId = 5,
+                            OurPrice = 1.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 27,
+                            BranchId = 5,
+                            Count = 62,
+                            LocationId = 6,
+                            MedicineId = 5,
+                            OurPrice = 1.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 28,
+                            BranchId = 4,
+                            Count = 74,
+                            LocationId = 8,
+                            MedicineId = 5,
+                            OurPrice = 1.6000000000000001
+                        },
+                        new
+                        {
+                            Id = 29,
+                            BranchId = 1,
+                            Count = 7,
+                            LocationId = 1,
+                            MedicineId = 4,
+                            OurPrice = 6.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 30,
+                            BranchId = 11,
+                            Count = 8,
+                            LocationId = 2,
+                            MedicineId = 4,
+                            OurPrice = 6.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 31,
+                            BranchId = 2,
+                            Count = 5,
+                            LocationId = 3,
+                            MedicineId = 4,
+                            OurPrice = 6.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 32,
+                            BranchId = 4,
+                            Count = 2,
+                            LocationId = 2,
+                            MedicineId = 4,
+                            OurPrice = 6.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 33,
+                            BranchId = 2,
+                            Count = 8,
+                            LocationId = 3,
+                            MedicineId = 4,
+                            OurPrice = 6.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 34,
+                            BranchId = 3,
+                            Count = 9,
+                            LocationId = 7,
+                            MedicineId = 4,
+                            OurPrice = 6.9500000000000002
+                        },
+                        new
+                        {
+                            Id = 35,
+                            BranchId = 1,
+                            Count = 7,
+                            LocationId = 1,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 36,
+                            BranchId = 2,
+                            Count = 5,
+                            LocationId = 2,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 37,
+                            BranchId = 4,
+                            Count = 183,
+                            LocationId = 3,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 38,
+                            BranchId = 11,
+                            Count = 3,
+                            LocationId = 4,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 39,
+                            BranchId = 1,
+                            Count = 6,
+                            LocationId = 5,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 40,
+                            BranchId = 5,
+                            Count = 12,
                             LocationId = 6,
                             MedicineId = 2,
-                            OurPrice = 18.449999999999999
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 41,
+                            BranchId = 3,
+                            Count = 14,
+                            LocationId = 7,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 42,
+                            BranchId = 6,
+                            Count = 14,
+                            LocationId = 8,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 43,
+                            BranchId = 8,
+                            Count = 2,
+                            LocationId = 9,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
+                        },
+                        new
+                        {
+                            Id = 44,
+                            BranchId = 9,
+                            Count = 6,
+                            LocationId = 10,
+                            MedicineId = 2,
+                            OurPrice = 17.649999999999999
                         });
                 });
 
@@ -328,23 +751,121 @@ namespace AutoPharma.Migrations
                         new
                         {
                             Id = 4,
+                            BranchId = 1,
+                            Cabinet = "A",
+                            Shelf = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BranchId = 1,
+                            Cabinet = "A",
+                            Shelf = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BranchId = 1,
+                            Cabinet = "B",
+                            Shelf = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BranchId = 1,
+                            Cabinet = "B",
+                            Shelf = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BranchId = 1,
+                            Cabinet = "B",
+                            Shelf = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BranchId = 1,
+                            Cabinet = "B",
+                            Shelf = 4
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BranchId = 1,
+                            Cabinet = "B",
+                            Shelf = 5
+                        },
+                        new
+                        {
+                            Id = 11,
                             BranchId = 2,
                             Cabinet = "A",
                             Shelf = 1
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 12,
                             BranchId = 2,
                             Cabinet = "A",
                             Shelf = 2
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 13,
                             BranchId = 2,
                             Cabinet = "A",
                             Shelf = 3
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BranchId = 2,
+                            Cabinet = "A",
+                            Shelf = 4
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BranchId = 2,
+                            Cabinet = "A",
+                            Shelf = 5
+                        },
+                        new
+                        {
+                            Id = 16,
+                            BranchId = 2,
+                            Cabinet = "B",
+                            Shelf = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            BranchId = 2,
+                            Cabinet = "B",
+                            Shelf = 2
+                        },
+                        new
+                        {
+                            Id = 18,
+                            BranchId = 2,
+                            Cabinet = "B",
+                            Shelf = 3
+                        },
+                        new
+                        {
+                            Id = 19,
+                            BranchId = 2,
+                            Cabinet = "B",
+                            Shelf = 4
+                        },
+                        new
+                        {
+                            Id = 20,
+                            BranchId = 2,
+                            Cabinet = "B",
+                            Shelf = 5
                         });
                 });
 
@@ -397,6 +918,76 @@ namespace AutoPharma.Migrations
                             Information = "This medicine is used as a antibiotic",
                             MOHPrice = 17.649999999999999,
                             Name = "Penicillin "
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Dose = "180",
+                            ExpiredDate = new DateTime(2026, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            Information = "This medicine is used as a Anti-allergic",
+                            MOHPrice = 4.9500000000000002,
+                            Name = "FEXON"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Dose = "220",
+                            ExpiredDate = new DateTime(2024, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            Information = "This medicine is used as a 	Intestinal antiseptic",
+                            MOHPrice = 6.9500000000000002,
+                            Name = "DIAX SUSP"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Dose = "200",
+                            ExpiredDate = new DateTime(2027, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            Information = "This medicine is used as a Antibiotics",
+                            MOHPrice = 1.2,
+                            Name = "Zithrokan"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Dose = "500",
+                            ExpiredDate = new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            Information = "This medicine is used as a antipyretic",
+                            MOHPrice = 2.6000000000000001,
+                            Name = "Alvedon"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Dose = "250",
+                            ExpiredDate = new DateTime(2025, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            Information = "This medicine is used for cramps",
+                            MOHPrice = 4.7000000000000002,
+                            Name = "cyclease"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Dose = "400",
+                            ExpiredDate = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            Information = "This medicine is used for cold",
+                            MOHPrice = 1.1000000000000001,
+                            Name = "DAYQUIL"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Dose = "200",
+                            ExpiredDate = new DateTime(2027, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            Information = "This medicine is used for headache",
+                            MOHPrice = 9.8000000000000007,
+                            Name = "Excedrin"
                         });
                 });
 

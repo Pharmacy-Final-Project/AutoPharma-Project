@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoPharma.Data;
+using AutoPharma.Models;
+using AutoPharma.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AutoPharma.Data;
-using AutoPharma.Models;
-using AutoPharma.Models.Interfaces;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AutoPharma.Controllers
 {
     public class BranchMedicinesController : Controller
     {
+        private readonly IBranch _branch;
         private readonly IBranchMedicine _branchMedicine;
         private readonly AppDbContext _context;
 
-        public BranchMedicinesController(IBranchMedicine branchMedicine, AppDbContext context)
+        public BranchMedicinesController(IBranchMedicine branchMedicine, AppDbContext context, IBranch branch)
         {
             _branchMedicine = branchMedicine;
             _context = context;
+            _branch = branch;
 
         }
 
@@ -46,19 +46,58 @@ namespace AutoPharma.Controllers
 
             return View(branchMedicine);
         }
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
         public async Task<IActionResult> ChooseCity()
         {
+            //ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
 
-            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+            ViewBag.Id = new SelectList(_context.Cities, "Id", "Name");
+
             return View();
         }
-       
-        public async Task<IActionResult> ChooseBranch(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> ChooseCity(City city)
         {
+            //it returns an empty city with correct id i select from list
+            //now here, i return a list of branches, where Branch.CityId == city.id
+            //the problem now is that im returning to the same view
+            //so I want to redirect to a new view that does the same thing but for branch now!
 
-            ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address");
+            ViewBag.secondId = new SelectList(_context.Branches.Where(x => x.CityId == city.Id), "Id", "Address");
+
+
+
+            return View("ChooseBranch");
+        }
+
+
+        public async Task<IActionResult> ChooseBranch()
+        {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ChooseBranch(Branch branch)
+        {
+            var branchMedicines = await _context.BranchMedicines.Where(x => x.BranchId == branch.Id)
+                .Include(y => y.Medicine)
+                .Include(z => z.Branch)
+                .ToListAsync();
+            return View("Index", branchMedicines);
+        }
+
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
         // GET: BranchMedicines/Create
         public IActionResult Create()
