@@ -32,16 +32,16 @@ namespace AutoPharma.Data
 
             modelBuilder.Entity<Branch>().HasData(
                 new Branch { Id = 1, CityId = 1, Address = "Amman Street", Phone = "1000" },
-                new Branch { Id = 1, CityId = 1, Address = "Abdon", Phone = "1200" },
-                new Branch { Id = 1, CityId = 1, Address = "Marka", Phone = "1300" },
-                new Branch { Id = 1, CityId = 1, Address = "Sweleh", Phone = "1400" },
-                new Branch { Id = 1, CityId = 1, Address = "Al-sabea", Phone = "1500" },
-                new Branch { Id = 1, CityId = 1, Address = "Al-thamin", Phone = "1600" },
-                new Branch { Id = 2, CityId = 3, Address = "Irbid Street", Phone = "2100" },
-                new Branch { Id = 2, CityId = 3, Address = "Albalad", Phone = "2200" },
-                new Branch { Id = 2, CityId = 3, Address = "AL-ramtha", Phone = "2300" },
-                new Branch { Id = 2, CityId = 3, Address = "Sal", Phone = "2400" },
-                new Branch { Id = 2, CityId = 3, Address = "Irbid Street", Phone = "2500" }
+                new Branch { Id = 2, CityId = 1, Address = "Abdon", Phone = "1200" },
+                new Branch { Id = 3, CityId = 1, Address = "Marka", Phone = "1300" },
+                new Branch { Id = 4, CityId = 1, Address = "Sweleh", Phone = "1400" },
+                new Branch { Id = 5, CityId = 1, Address = "Al-sabea", Phone = "1500" },
+                new Branch { Id = 6, CityId = 1, Address = "Al-thamin", Phone = "1600" },
+                new Branch { Id = 7, CityId = 3, Address = "Irbid Street", Phone = "2100" },
+                new Branch { Id = 8, CityId = 3, Address = "Albalad", Phone = "2200" },
+                new Branch { Id = 9, CityId = 3, Address = "AL-ramtha", Phone = "2300" },
+                new Branch { Id = 10, CityId = 3, Address = "Sal", Phone = "2400" },
+                new Branch { Id = 11, CityId = 3, Address = "Irbid Street", Phone = "2500" }
                 );
 
             modelBuilder.Entity<Medicine>().HasData(
@@ -97,14 +97,14 @@ namespace AutoPharma.Data
                 //FEXON
                 new BranchMedicine { Id = 3, BranchId = 1, LocationId = 6, MedicineId = 3, Count = 99, OurPrice = 4.95 },
                 new BranchMedicine { Id = 4, BranchId = 2, LocationId = 2, MedicineId = 3, Count = 55, OurPrice = 4.95 },
-                new BranchMedicine { Id = 5, BranchId = 2, LocationId = 5, MedicineId = 3, Count = 55, OurPrice = 4.95 },
+                new BranchMedicine { Id = 5, BranchId = 4, LocationId = 5, MedicineId = 3, Count = 55, OurPrice = 4.95 },
                 new BranchMedicine { Id = 6, BranchId = 1, LocationId = 2, MedicineId = 3, Count = 85, OurPrice = 4.95 },
 
                 //Excedrin
-                new BranchMedicine { Id = 7, BranchId = 1, LocationId = 1, MedicineId = 9, Count = 53, OurPrice = 9.8 },
+                new BranchMedicine { Id = 7, BranchId = 11, LocationId = 1, MedicineId = 9, Count = 53, OurPrice = 9.8 },
                 new BranchMedicine { Id = 8, BranchId = 5, LocationId = 8, MedicineId = 9, Count = 73, OurPrice = 9.8 },
                 new BranchMedicine { Id = 9, BranchId = 3, LocationId = 4, MedicineId = 9, Count = 76, OurPrice = 9.8 },
-                new BranchMedicine { Id = 10, BranchId = 1, LocationId = 9, MedicineId = 9, Count = 13, OurPrice = 9.8 },
+                new BranchMedicine { Id = 10, BranchId = 9, LocationId = 9, MedicineId = 9, Count = 13, OurPrice = 9.8 },
 
                 //DAYQUIL
                 new BranchMedicine { Id = 11, BranchId = 1, LocationId = 1, MedicineId = 8, Count = 73, OurPrice = 1.1 },
@@ -116,13 +116,13 @@ namespace AutoPharma.Data
                 new BranchMedicine { Id = 15, BranchId = 1, LocationId = 1, MedicineId = 7, Count = 76, OurPrice = 4.7 },
                 new BranchMedicine { Id = 16, BranchId = 6, LocationId = 2, MedicineId = 7, Count = 88, OurPrice = 4.7 },
                 new BranchMedicine { Id = 17, BranchId = 3, LocationId = 3, MedicineId = 7, Count = 63, OurPrice = 4.7 },
-                new BranchMedicine { Id = 18, BranchId = 1, LocationId = 4, MedicineId = 7, Count = 56, OurPrice = 4.7 },
+                new BranchMedicine { Id = 18, BranchId = 4, LocationId = 4, MedicineId = 7, Count = 56, OurPrice = 4.7 },
 
                 //Alvedon
                 new BranchMedicine { Id = 19, BranchId = 1, LocationId = 1, MedicineId = 6, Count = 44, OurPrice = 2.6 },
                 new BranchMedicine { Id = 20, BranchId = 2, LocationId = 6, MedicineId = 6, Count = 85, OurPrice = 2.6 },
                 new BranchMedicine { Id = 21, BranchId = 7, LocationId = 8, MedicineId = 6, Count = 3, OurPrice = 2.6 },
-                new BranchMedicine { Id = 22, BranchId = 2, LocationId = 2, MedicineId = 6, Count = 6, OurPrice = 2.6 },
+                new BranchMedicine { Id = 22, BranchId = 8, LocationId = 2, MedicineId = 6, Count = 6, OurPrice = 2.6 },
 
                 //Zithrokan
                 new BranchMedicine { Id = 23, BranchId = 1, LocationId = 1, MedicineId = 5, Count = 99, OurPrice = 1.6 },
@@ -134,24 +134,24 @@ namespace AutoPharma.Data
 
                 //DIAX SUSP
                 new BranchMedicine { Id = 29, BranchId = 1, LocationId = 1, MedicineId = 4, Count = 7, OurPrice = 6.95 },
-                new BranchMedicine { Id = 30, BranchId = 1, LocationId = 2, MedicineId = 4, Count = 8, OurPrice = 6.95 },
+                new BranchMedicine { Id = 30, BranchId = 11, LocationId = 2, MedicineId = 4, Count = 8, OurPrice = 6.95 },
                 new BranchMedicine { Id = 31, BranchId = 2, LocationId = 3, MedicineId = 4, Count = 5, OurPrice = 6.95 },
-                new BranchMedicine { Id = 32, BranchId = 1, LocationId = 2, MedicineId = 4, Count = 2, OurPrice = 6.95 },
+                new BranchMedicine { Id = 32, BranchId = 4, LocationId = 2, MedicineId = 4, Count = 2, OurPrice = 6.95 },
                 new BranchMedicine { Id = 33, BranchId = 2, LocationId = 3, MedicineId = 4, Count = 8, OurPrice = 6.95 },
-                new BranchMedicine { Id = 34, BranchId = 1, LocationId = 7, MedicineId = 4, Count = 9, OurPrice = 6.95 },
+                new BranchMedicine { Id = 34, BranchId = 3, LocationId = 7, MedicineId = 4, Count = 9, OurPrice = 6.95 },
 
 
                 //Penicillin
                 new BranchMedicine { Id = 35, BranchId = 1, LocationId = 1, MedicineId = 2, Count = 7, OurPrice = 17.65 },
                 new BranchMedicine { Id = 36, BranchId = 2, LocationId = 2, MedicineId = 2, Count = 5, OurPrice = 17.65 },
                 new BranchMedicine { Id = 37, BranchId = 4, LocationId = 3, MedicineId = 2, Count = 183, OurPrice = 17.65 },
-                new BranchMedicine { Id = 38, BranchId = 4, LocationId = 4, MedicineId = 2, Count = 3, OurPrice = 17.65 },
+                new BranchMedicine { Id = 38, BranchId = 11, LocationId = 4, MedicineId = 2, Count = 3, OurPrice = 17.65 },
                 new BranchMedicine { Id = 39, BranchId = 1, LocationId = 5, MedicineId = 2, Count = 6, OurPrice = 17.65 },
-                new BranchMedicine { Id = 40, BranchId = 1, LocationId = 6, MedicineId = 2, Count = 12, OurPrice = 17.65 },
+                new BranchMedicine { Id = 40, BranchId = 5, LocationId = 6, MedicineId = 2, Count = 12, OurPrice = 17.65 },
                 new BranchMedicine { Id = 41, BranchId = 3, LocationId = 7, MedicineId = 2, Count = 14, OurPrice = 17.65 },
                 new BranchMedicine { Id = 42, BranchId = 6, LocationId = 8, MedicineId = 2, Count = 14, OurPrice = 17.65 },
                 new BranchMedicine { Id = 43, BranchId = 8, LocationId = 9, MedicineId = 2, Count = 2, OurPrice = 17.65 },
-                new BranchMedicine { Id = 44, BranchId = 1, LocationId = 10, MedicineId = 2, Count = 6, OurPrice = 17.65 }
+                new BranchMedicine { Id = 44, BranchId = 9, LocationId = 10, MedicineId = 2, Count = 6, OurPrice = 17.65 }
 
                 );
 
