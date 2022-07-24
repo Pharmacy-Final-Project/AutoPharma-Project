@@ -2,6 +2,7 @@
 using AutoPharma.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoPharma.Models.Services
@@ -70,5 +71,7 @@ namespace AutoPharma.Models.Services
             await _context.SaveChangesAsync();
             return branchMedicine;
         }
+        
+     
     }
 }

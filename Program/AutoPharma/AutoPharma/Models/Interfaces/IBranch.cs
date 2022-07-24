@@ -10,9 +10,7 @@ namespace AutoPharma.Models.Interfaces
         Task DeleteBranch(int Id);
         Task<Branch> CreateBranch(Branch branch);
         Task<Branch> UpdateBranch(int Id, Branch branch);
-
-
-
+       // Task<List<BranchMedicine>> Search(string text, int branchId);
     }
 }
 
