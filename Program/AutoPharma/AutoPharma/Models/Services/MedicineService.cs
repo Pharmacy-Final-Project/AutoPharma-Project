@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AutoPharma.Models.Services
@@ -64,8 +65,8 @@ namespace AutoPharma.Models.Services
         {
             if (file == null)
             {
-                Uri defaultImg = new Uri("https://autopharma.blob.core.windows.net/images/Default.jpg");
-                return defaultImg;
+                Uri defaultimg = new Uri("https://autopharmastorage.blob.core.windows.net/images/default.jpg");
+                return defaultimg;
             }
             BlobContainerClient container = new BlobContainerClient(_configration.GetConnectionString("AzureBlob"), "images");
             await container.CreateIfNotExistsAsync();
@@ -83,5 +84,24 @@ namespace AutoPharma.Models.Services
             return blob.Uri;
 
         }
+        public async Task<List<Medicine>> GetExpiredAfterMonth()
+        {
+
+            var medicine = await _context.Medicines.Where(p => (DateTime.Today - p.ExpiredDate).Days <= 30).ToListAsync();
+            return medicine;
+        }
+        public async Task<List<Medicine>> GetExpiredAfterTwoMonth()
+        {
+
+            var medicine = await _context.Medicines.Where(p => (DateTime.Today - p.ExpiredDate).Days <= 60).ToListAsync();
+            return medicine;
+        }
+        public async Task<List<Medicine>> SortByExpirationDate()
+        {
+
+            var medicines = await _context.Medicines.OrderBy(p => p.ExpiredDate).ToListAsync();
+            return medicines;
+        }
+
     }
 }

@@ -36,8 +36,8 @@ namespace AutoPharma.Data
                 );
 
             modelBuilder.Entity<Medicine>().HasData(
-                new Medicine { Id = 1, Name = "Panadol", Dose = "250", Information = "This medicine is used as a painkiller", MOHPrice = 3.5, ImageUri = new Uri("https://autopharma.blob.core.windows.net/images/panadol.jpg") },
-                new Medicine { Id = 2, Name = "Penicillin ", Dose = "500", Information = "This medicine is used as a antibiotic", MOHPrice = 17.65 , ImageUri = new Uri("https://autopharma.blob.core.windows.net/images/Penicillin.jpg") }
+                new Medicine { Id = 1, Name = "Panadol", Dose = "250", Information = "This medicine is used as a painkiller", MOHPrice = 3.5, ImageUri = new Uri("https://autopharmastorage.blob.core.windows.net/images/panadol.jpg") ,ExpiredDate= new DateTime(2023,08,22)},
+                new Medicine { Id = 2, Name = "Penicillin ", Dose = "500", Information = "This medicine is used as a antibiotic", MOHPrice = 17.65 , ImageUri = new Uri("https://autopharmastorage.blob.core.windows.net/images/Penicillin.jpg"), ExpiredDate = new DateTime(2022, 08, 22) }
 
                 );
 

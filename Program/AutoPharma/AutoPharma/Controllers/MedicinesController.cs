@@ -153,5 +153,20 @@ namespace AutoPharma.Controllers
             }
             else return true;
         }
+        public async Task<IActionResult> GetExpiredAfterMonth()
+        {
+            var medicineList = await _medicine.GetExpiredAfterMonth();
+            return View(medicineList);
+        }
+        public async Task<IActionResult> ExpiredAfterTwomonth()
+        {
+            var medicineList = await _medicine.GetExpiredAfterTwoMonth();
+            return View(medicineList);
+        }
+        public async Task<IActionResult> SortByExpirationDate()
+        {
+            var medicineList = await _medicine.SortByExpirationDate();
+            return View(medicineList);
+        }
     }
 }
