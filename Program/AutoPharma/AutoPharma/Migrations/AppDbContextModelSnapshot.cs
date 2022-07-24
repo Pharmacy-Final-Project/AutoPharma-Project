@@ -355,6 +355,9 @@ namespace AutoPharma.Migrations
                     b.Property<string>("Dose")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("ExpiredDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ImageUri")
                         .HasColumnType("nvarchar(max)");
 
@@ -376,6 +379,8 @@ namespace AutoPharma.Migrations
                         {
                             Id = 1,
                             Dose = "250",
+                            ExpiredDate = new DateTime(2023, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
                             Information = "This medicine is used as a painkiller",
                             MOHPrice = 3.5,
                             Name = "Panadol"
@@ -384,6 +389,8 @@ namespace AutoPharma.Migrations
                         {
                             Id = 2,
                             Dose = "500",
+                            ExpiredDate = new DateTime(2022, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/Penicillin.jpg",
                             Information = "This medicine is used as a antibiotic",
                             MOHPrice = 17.649999999999999,
                             Name = "Penicillin "

@@ -80,9 +80,10 @@ namespace AutoPharma
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseStaticFiles();
+
             app.UseSession();
 
             app.UseAuthentication();

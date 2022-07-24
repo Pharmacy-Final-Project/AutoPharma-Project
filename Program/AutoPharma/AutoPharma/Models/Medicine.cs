@@ -9,6 +9,7 @@ namespace AutoPharma.Models
         public string Name { get; set; }
         public string Dose { get; set; }
         public Uri ImageUri { get; set; }
+        public DateTime ExpiredDate { get; set; }
 
         //MOH: Ministry of Health
         public double MOHPrice { get; set; }

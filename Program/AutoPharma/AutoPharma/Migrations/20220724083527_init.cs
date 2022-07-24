@@ -57,6 +57,8 @@ namespace AutoPharma.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Dose = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUri = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExpiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MOHPrice = table.Column<double>(type: "float", nullable: false),
                     Information = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -294,11 +296,11 @@ namespace AutoPharma.Migrations
 
             migrationBuilder.InsertData(
                 table: "Medicines",
-                columns: new[] { "Id", "Dose", "Information", "MOHPrice", "Name" },
+                columns: new[] { "Id", "Dose", "ExpiredDate", "ImageUri", "Information", "MOHPrice", "Name" },
                 values: new object[,]
                 {
-                    { 1, "250", "This medicine is used as a painkiller", 3.5, "Panadol" },
-                    { 2, "500", "This medicine is used as a antibiotic", 17.649999999999999, "Penicillin " }
+                    { 1, "250", new DateTime(2023, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", "This medicine is used as a painkiller", 3.5, "Panadol" },
+                    { 2, "500", new DateTime(2022, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmastorage.blob.core.windows.net/images/Penicillin.jpg", "This medicine is used as a antibiotic", 17.649999999999999, "Penicillin " }
                 });
 
             migrationBuilder.InsertData(
