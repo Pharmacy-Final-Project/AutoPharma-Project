@@ -1,3 +1,4 @@
+
 using AutoPharma.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -41,3 +42,4 @@ namespace AutoPharma
                 });
     }
 }
+
