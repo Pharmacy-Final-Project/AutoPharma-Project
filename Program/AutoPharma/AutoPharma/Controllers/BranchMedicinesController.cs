@@ -4,6 +4,8 @@ using AutoPharma.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,6 +31,8 @@ namespace AutoPharma.Controllers
             var AllBranchMedicine = await _branchMedicine.GetAllBranchMedicine();
             return View(AllBranchMedicine);
         }
+      
+
 
         // GET: BranchMedicines/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -84,10 +88,35 @@ namespace AutoPharma.Controllers
         [HttpPost]
         public async Task<IActionResult> ChooseBranch(Branch branch)
         {
+            ViewBag.secondId = _context.Branches.Where(x => x.Id == branch.Id).FirstOrDefault().Id;
             var branchMedicines = await _context.BranchMedicines.Where(x => x.BranchId == branch.Id)
                 .Include(y => y.Medicine)
                 .Include(z => z.Branch)
                 .ToListAsync();
+            
+            return View("Index", branchMedicines);
+        }
+        public async Task<IActionResult> Filter(int id)
+        {
+
+            return View();
+
+        }
+        [HttpPost]
+
+        public async Task<IActionResult> Filter(string searchString, Branch branch)
+        {
+            var branchMedicines = await _context.BranchMedicines.Where(x => x.BranchId == branch.Id)
+               .Include(y => y.Medicine)
+               //.Include(z => z.Branch)
+               .ToListAsync();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResultNew = branchMedicines.Where(n => string.Equals(n.Medicine.Information, searchString, StringComparison.CurrentCultureIgnoreCase) || string.Equals(n.Medicine.Name, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                //.Where(x => x.BranchId == branch.Id && (x.Medicine.Information.Contains(searchString) || x.Medicine.Name.Contains(searchString)
+                return View("Index", filteredResultNew);
+            }
+
             return View("Index", branchMedicines);
         }
 

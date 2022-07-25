@@ -13,5 +13,7 @@ namespace AutoPharma.Models.Interfaces
 
         //Task AddMedicineToBranch(int branchId, int medicineId);
         Task RemoveMedicineFromBranch(int branchId, int medicineId);
+        //Task<List<BranchMedicine>> Search(string text);
+
     }
 }
