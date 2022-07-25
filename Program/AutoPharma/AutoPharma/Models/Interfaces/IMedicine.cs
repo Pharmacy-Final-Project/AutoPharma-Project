@@ -10,8 +10,9 @@ namespace AutoPharma.Models.Interfaces
         Task<List<Medicine>> GetAllMedicine();
         Task<Medicine> GetMedicine(int Id);
         Task DeleteMedicine(int Id);
-        Task<Medicine> CreateMedicine(Medicine medicine, IFormFile file);
-        Task<Medicine> UpdateMedicine(int Id, Medicine medicine, IFormFile file);
+        Task<Medicine> CreateMedicine(Medicine medicine);
+        //, IFormFile file
+        Task<Medicine> UpdateMedicine(int Id, Medicine medicine);
         Task<List<Medicine>> SortByExpirationDate();
         Task<List<Medicine>> GetExpiredAfterTwoMonth();
         Task<List<Medicine>> GetExpiredAfterMonth();
