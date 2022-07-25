@@ -107,25 +107,42 @@ namespace AutoPharma.Controllers
 
         public async Task<IActionResult> Filter(string searchString, Branch branch)
         {
-            ViewBag.secondId = _context.Branches.Where(x => x.Id == branch.Id).FirstOrDefault().Id;
-
-            var branchMedicines = await _context.BranchMedicines.Where(x => x.BranchId == branch.Id)
-               .Include(y => y.Medicine)
-               //.Include(z => z.Branch)
-               .ToListAsync();
-
-            if (!string.IsNullOrEmpty(searchString))
+            if (branch.Id == 0)
             {
-                var filteredResultNew = branchMedicines.Where(x => x.BranchId == branch.Id && (x.Medicine.Information.Contains(searchString) || x.Medicine.Name.Contains(searchString)));
+                var branchMedicines = await _context.BranchMedicines
+                  .Include(y => y.Medicine)
+                  //.Include(z => z.Branch)
+                  .ToListAsync();
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    var filteredResultNew = _context.BranchMedicines.Where(x => x.Medicine.Information.Contains(searchString) || x.Medicine.Name.Contains(searchString));
 
 
-                return View("Index", filteredResultNew);
+                    return View("Index", filteredResultNew);
+                }
+                return View("Index", branchMedicines);
             }
+            else
+            {
+                ViewBag.secondId = _context.Branches.Where(x => x.Id == branch.Id).FirstOrDefault().Id;
+
+                var branchMedicines = await _context.BranchMedicines.Where(x => x.BranchId == branch.Id)
+                   .Include(y => y.Medicine)
+                   //.Include(z => z.Branch)
+                   .ToListAsync();
+
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    var filteredResultNew = branchMedicines.Where(x => x.BranchId == branch.Id && (x.Medicine.Information.Contains(searchString) || x.Medicine.Name.Contains(searchString)));
 
 
-            return View("Index", branchMedicines);
+                    return View("Index", filteredResultNew);
+                }
+
+
+                return View("Index", branchMedicines);
+            }
         }
-
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>
