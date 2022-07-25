@@ -65,16 +65,14 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Dose,MOHPrice,Information,ImageUri")] Medicine medicine, IFormFile file)
+        public async Task<IActionResult> Create( Medicine medicine, IFormFile file)
         {
-            if (ModelState.IsValid)
-            {
-                await _medicine.CreateMedicine(medicine);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(medicine);
-
-
+            //if (ModelState.IsValid)
+            //{
+            //    await _medicine.CreateMedicine(medicine);
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(medicine);
 
 
             BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "dbmedecine");
@@ -124,32 +122,26 @@ namespace AutoPharma.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id,Medicine medicine, IFormFile file)
         {
-            if (id != medicine.Id)
+
+            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "dbmedecine");
+            await container.CreateIfNotExistsAsync();
+            BlobClient blob = container.GetBlobClient(file.FileName);
+            using var stream = file.OpenReadStream();
+            BlobUploadOptions options = new BlobUploadOptions()
             {
-                return NotFound();
+                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+            };
+
+            if (!blob.Exists())
+            {
+                await blob.UploadAsync(stream, options);
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    await _medicine.UpdateMedicine(id, medicine,file);
 
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MedicineExists(medicine.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(medicine);
+            medicine.ImageUri = blob.Uri.ToString();
+            await _medicine.UpdateMedicine(id, medicine);
+            stream.Close();
+            return RedirectToAction("Index");
         }
 
         // GET: Medicines/Delete/5

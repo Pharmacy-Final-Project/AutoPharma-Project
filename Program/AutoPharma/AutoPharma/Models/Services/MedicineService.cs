@@ -24,7 +24,7 @@ namespace AutoPharma.Models.Services
         public async Task<Medicine> CreateMedicine(Medicine medicine)
         {
             //, IFormFile file
-            //medicine.ImageUri = GetFile(file).Result;
+            //=medicine.ImageUri = GetFile(file).Result;
             _context.Entry(medicine).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return medicine;
@@ -53,13 +53,13 @@ namespace AutoPharma.Models.Services
             return medicine;
         }
 
-        public async Task<Medicine> UpdateMedicine(int Id, Medicine medicine, IFormFile file)
+        public async Task<Medicine> UpdateMedicine(int Id, Medicine medicine)
         {
-            if (file != null)
+          /*  if (file != null)
             {
               //  medicine.ImageUri = GetFile(file).Result;
 
-            }
+            }*/
             _context.Entry(medicine).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return medicine;
