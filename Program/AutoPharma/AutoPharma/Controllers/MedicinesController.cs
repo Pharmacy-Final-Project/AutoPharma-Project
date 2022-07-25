@@ -65,16 +65,14 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Dose,MOHPrice,Information,ImageUri")] Medicine medicine, IFormFile file)
+        public async Task<IActionResult> Create( Medicine medicine, IFormFile file)
         {
-            if (ModelState.IsValid)
-            {
-                await _medicine.CreateMedicine(medicine);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(medicine);
-
-
+            //if (ModelState.IsValid)
+            //{
+            //    await _medicine.CreateMedicine(medicine);
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(medicine);
 
 
             BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "dbmedecine");
