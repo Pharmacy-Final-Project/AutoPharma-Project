@@ -9,6 +9,9 @@ using AutoPharma.Data;
 using AutoPharma.Models;
 using AutoPharma.Models.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace AutoPharma.Controllers
 {
@@ -16,10 +19,14 @@ namespace AutoPharma.Controllers
     {
 
         private readonly IMedicine _medicine;
+        private readonly IConfiguration _Configuration;
 
-        public MedicinesController(IMedicine medicine)
+
+        public MedicinesController(IMedicine medicine, IConfiguration config)
         {
             _medicine = medicine;
+            _Configuration = config;
+
         }
 
         // GET: Medicines
@@ -62,9 +69,35 @@ namespace AutoPharma.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _medicine.CreateMedicine(medicine,file);
+                await _medicine.CreateMedicine(medicine);
                 return RedirectToAction(nameof(Index));
             }
+            return View(medicine);
+
+
+
+
+            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "dbmedecine");
+
+            await container.CreateIfNotExistsAsync();
+            BlobClient blob = container.GetBlobClient(file.FileName);
+            using var stream = file.OpenReadStream();
+            BlobUploadOptions options = new BlobUploadOptions()
+            {
+                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+            };
+            if (!blob.Exists())
+            {
+                await blob.UploadAsync(stream, options);
+            }
+
+            medicine.ImageUri = blob.Uri.ToString();
+            if (ModelState.IsValid)
+            {
+                await _medicine.CreateMedicine(medicine);
+                return RedirectToAction("Index");
+            }
+            stream.Close();
             return View(medicine);
         }
 

@@ -21,12 +21,15 @@ namespace AutoPharma.Models.Services
             _context = context;
             _configration = configuration;
         }
-        public async Task<Medicine> CreateMedicine(Medicine medicine, IFormFile file)
+        public async Task<Medicine> CreateMedicine(Medicine medicine)
         {
-            medicine.ImageUri = GetFile(file).Result;
+            //, IFormFile file
+            //medicine.ImageUri = GetFile(file).Result;
             _context.Entry(medicine).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return medicine;
+
+          
         }
 
         public async Task DeleteMedicine(int Id)
@@ -54,7 +57,7 @@ namespace AutoPharma.Models.Services
         {
             if (file != null)
             {
-                medicine.ImageUri = GetFile(file).Result;
+              //  medicine.ImageUri = GetFile(file).Result;
 
             }
             _context.Entry(medicine).State = EntityState.Modified;
