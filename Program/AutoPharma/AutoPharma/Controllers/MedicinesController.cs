@@ -75,7 +75,7 @@ namespace AutoPharma.Controllers
             //return View(medicine);
 
 
-            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "dbmedecine");
+            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "images");
 
             await container.CreateIfNotExistsAsync();
             BlobClient blob = container.GetBlobClient(file.FileName);
@@ -123,7 +123,7 @@ namespace AutoPharma.Controllers
         public async Task<IActionResult> Edit(int id,Medicine medicine, IFormFile file)
         {
 
-            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "dbmedecine");
+            BlobContainerClient container = new BlobContainerClient(_Configuration.GetConnectionString("AzureBlob"), "images");
             await container.CreateIfNotExistsAsync();
             BlobClient blob = container.GetBlobClient(file.FileName);
             using var stream = file.OpenReadStream();

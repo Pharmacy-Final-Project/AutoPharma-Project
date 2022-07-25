@@ -28,10 +28,11 @@ namespace AutoPharma.Controllers
         // GET: BranchMedicines
         public async Task<IActionResult> Index()
         {
+
             var AllBranchMedicine = await _branchMedicine.GetAllBranchMedicine();
             return View(AllBranchMedicine);
         }
-      
+
 
 
         // GET: BranchMedicines/Details/5
@@ -55,7 +56,7 @@ namespace AutoPharma.Controllers
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>
-        public async Task<IActionResult> ChooseCity()
+        public IActionResult ChooseCity()
         {
             //ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
 
@@ -65,7 +66,7 @@ namespace AutoPharma.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChooseCity(City city)
+        public IActionResult ChooseCity(City city)
         {
             //it returns an empty city with correct id i select from list
             //now here, i return a list of branches, where Branch.CityId == city.id
@@ -80,7 +81,7 @@ namespace AutoPharma.Controllers
         }
 
 
-        public async Task<IActionResult> ChooseBranch()
+        public IActionResult ChooseBranch()
         {
             return View();
         }
@@ -93,29 +94,34 @@ namespace AutoPharma.Controllers
                 .Include(y => y.Medicine)
                 .Include(z => z.Branch)
                 .ToListAsync();
-            
+
             return View("Index", branchMedicines);
         }
-        public async Task<IActionResult> Filter(int id)
-        {
+        //public async Task<IActionResult> Filter(int id)
+        //{
 
-            return View();
+        //    return View();
 
-        }
+        //}
         [HttpPost]
 
         public async Task<IActionResult> Filter(string searchString, Branch branch)
         {
+            ViewBag.secondId = _context.Branches.Where(x => x.Id == branch.Id).FirstOrDefault().Id;
+
             var branchMedicines = await _context.BranchMedicines.Where(x => x.BranchId == branch.Id)
                .Include(y => y.Medicine)
                //.Include(z => z.Branch)
                .ToListAsync();
+
             if (!string.IsNullOrEmpty(searchString))
             {
-                var filteredResultNew = branchMedicines.Where(n => string.Equals(n.Medicine.Information, searchString, StringComparison.CurrentCultureIgnoreCase) || string.Equals(n.Medicine.Name, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
-                //.Where(x => x.BranchId == branch.Id && (x.Medicine.Information.Contains(searchString) || x.Medicine.Name.Contains(searchString)
+                var filteredResultNew = branchMedicines.Where(x => x.BranchId == branch.Id && (x.Medicine.Information.Contains(searchString) || x.Medicine.Name.Contains(searchString)));
+
+
                 return View("Index", filteredResultNew);
             }
+
 
             return View("Index", branchMedicines);
         }

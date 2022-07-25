@@ -43,19 +43,17 @@ namespace AutoPharma.Data
                 new Branch { Id = 10, CityId = 3, Address = "Sal", Phone = "2400" },
                 new Branch { Id = 11, CityId = 3, Address = "Irbid Street", Phone = "2500" }
                 );
-
             modelBuilder.Entity<Medicine>().HasData(
-                new Medicine { Id = 1, Name = "Panadol", Dose = "250", Information = "This medicine is used as a painkiller", MOHPrice = 3.5, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2023,08,22)},
-                new Medicine { Id = 2, Name = "Penicillin ", Dose = "500", Information = "This medicine is used as a antibiotic", MOHPrice = 17.65, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2022, 08, 22) },
-                new Medicine { Id = 3, Name = "FEXON", Dose = "180", Information = "This medicine is used as a Anti-allergic", MOHPrice = 4.95, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2026, 06, 28) },
-                new Medicine { Id = 4, Name = "DIAX SUSP", Dose = "220", Information = "This medicine is used as a 	Intestinal antiseptic", MOHPrice = 6.95, ImageUri ="https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2024, 05, 26) },
-                new Medicine { Id = 5, Name = "Zithrokan", Dose = "200", Information = "This medicine is used as a Antibiotics", MOHPrice = 1.2, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2027, 02, 01) },
-                new Medicine { Id = 6, Name = "Alvedon", Dose = "500", Information = "This medicine is used as a antipyretic", MOHPrice = 2.6, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2024, 09, 12) },
-                new Medicine { Id = 7, Name = "cyclease", Dose = "250", Information = "This medicine is used for cramps", MOHPrice = 4.7, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2025, 04, 19) },
-                new Medicine { Id = 8, Name = "DAYQUIL", Dose = "400", Information = "This medicine is used for cold", MOHPrice = 1.1, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2023, 03, 14) },
-                new Medicine { Id = 9, Name = "Excedrin", Dose = "200", Information = "This medicine is used for headache", MOHPrice = 9.8, ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg" , ExpiredDate = new DateTime(2027, 01, 11) }
-               
-                
+              new Medicine { Id = 1, Name = "Panadol", Dose = "250", Information = "This medicine is used as a painkiller", MOHPrice = 3.5, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/panadol.jpg", ExpiredDate = new DateTime(2023, 08, 22) },
+              new Medicine { Id = 2, Name = "Penicillin ", Dose = "500", Information = "This medicine is used as a antibiotic", MOHPrice = 17.65, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Penicillin.jpg", ExpiredDate = new DateTime(2022, 08, 22) },
+              new Medicine { Id = 3, Name = "FEXON", Dose = "180", Information = "This medicine is used as a Anti-allergic", MOHPrice = 4.95, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/FEXON.jpg", ExpiredDate = new DateTime(2026, 06, 28) },
+              new Medicine { Id = 4, Name = "DIAX SUSP", Dose = "220", Information = "This medicine is used as a 	Intestinal antiseptic", MOHPrice = 6.95, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DIAXSUSP.jpg", ExpiredDate = new DateTime(2024, 05, 26) },
+              new Medicine { Id = 5, Name = "Zithrokan", Dose = "200", Information = "This medicine is used as a Antibiotics", MOHPrice = 1.2, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Zithrokan.jpg", ExpiredDate = new DateTime(2027, 02, 01) },
+              new Medicine { Id = 6, Name = "Alvedon", Dose = "500", Information = "This medicine is used as a antipyretic", MOHPrice = 2.6, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Alvedon.jpg", ExpiredDate = new DateTime(2024, 09, 12) },
+              new Medicine { Id = 7, Name = "cyclease", Dose = "250", Information = "This medicine is used for cramps", MOHPrice = 4.7, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/cyclease.jpg", ExpiredDate = new DateTime(2025, 04, 19) },
+              new Medicine { Id = 8, Name = "DAYQUIL", Dose = "400", Information = "This medicine is used for cold", MOHPrice = 1.1, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL.jpg", ExpiredDate = new DateTime(2023, 03, 14) },
+              new Medicine { Id = 9, Name = "Excedrin", Dose = "200", Information = "This medicine is used for headache", MOHPrice = 9.8, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Excedrin.jpg", ExpiredDate = new DateTime(2027, 01, 11) }
+
 
                 );
 
