@@ -5,15 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-<a asp-action="ChooseCity">Go to branch</a>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<form class="form-inline my-2 my-lg-0" asp-controller="BranchMedicines" asp-action="Filter" asp-route-id="@ViewBag.secondId" style="padding-right: 25px;">
-    <input name="searchString" type="text" class="form-control" placeholder="Search for a Medicine..." aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search">Search</i></button>
-</form>
+</table>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medicines In All Branch</title>
+</head>
+<body>
+                  <div class="row justify-content-center">
+
+<div class="btn-group p-3" role="group" aria-label="Basic example">
+
+<h1> Medicines In All Branch</h1>
+ </div>
+ </div>
+                <div class="row justify-content-center">
+
+<div class="btn-group p-3" role="group" aria-label="Basic example">
+   <button type="button" class="btn btn-outline-success mx-1">
+  <a asp-action="ChooseCity">Go to branch</a>
+ </button>
+    <button type="button" class="btn btn-outline-secondary mx-1">
+  <a asp-action="Create">Create New</a>
+ </button>
+  </div>
+ </div>
+ 
 @*<p>
     @using(Html.BeginForm("Index","BranchMedicine",FormMethod.Get))
     {
@@ -25,8 +42,12 @@
 
     </p>*@
 <table class="table">
-    <thead>
+     <thead class="table-dark">
+
         <tr>
+             <th>
+               Image
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Medicine.Name)
             </th>
@@ -45,13 +66,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.Branch)
             </th>
-            <th></th>
+            <th><form class="form-inline my-2 my-lg-0" asp-controller="BranchMedicines" asp-action="Filter" asp-route-id="@ViewBag.secondId" style="padding-right: 25px;">
+    <input name="searchString" type="text" class="form-control" placeholder="Search for a Medicine..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search">Search</i></button>
+</form></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+                 <td>
+                  <img swidth="50" height="60" src="@Html.DisplayFor(modelItem => item.Medicine.ImageUri)"></img>  
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Medicine.Name)
                 </td>
@@ -71,11 +98,13 @@
                     @Html.DisplayFor(modelItem => item.Branch.Address)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                   <button class="btn btn-outline-success mx-1 " type="submit"><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></button>
+               <button class="btn btn-outline-secondary mx-1" type="submit"><a asp-action="Details" asp-route-id="@item.Id">Details</a></button>
+                <button class="btn btn-outline-warning mx-1" type="submit"><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
                 </td>
             </tr>
         }
     </tbody>
-</table>
+
+</body>
+</html>
