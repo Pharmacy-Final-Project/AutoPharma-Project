@@ -64,29 +64,29 @@ namespace AutoPharma.Models.Services
             await _context.SaveChangesAsync();
             return medicine;
         }
-        public async Task<Uri> GetFile(IFormFile file)
-        {
-            if (file == null)
-            {
-                Uri defaultimg = new Uri("https://autopharmastorage.blob.core.windows.net/images/default.jpg");
-                return defaultimg;
-            }
-            BlobContainerClient container = new BlobContainerClient(_configration.GetConnectionString("AzureBlob"), "images");
-            await container.CreateIfNotExistsAsync();
-            BlobClient blob = container.GetBlobClient(file.FileName);
+        //public async Task<Uri> GetFile(IFormFile file)
+        //{
+        //    if (file == null)
+        //    {
+        //        Uri defaultimg = new Uri("https://autopharmastorage.blob.core.windows.net/images/default.jpg");
+        //        return defaultimg;
+        //    }
+        //    BlobContainerClient container = new BlobContainerClient(_configration.GetConnectionString("AzureBlob"), "images");
+        //    await container.CreateIfNotExistsAsync();
+        //    BlobClient blob = container.GetBlobClient(file.FileName);
 
-            using var stream = file.OpenReadStream();
-            BlobUploadOptions options = new BlobUploadOptions()
-            {
-                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
-            };
-            if (!blob.Exists())
-            {
-                await blob.UploadAsync(stream, options);
-            }
-            return blob.Uri;
+        //    using var stream = file.OpenReadStream();
+        //    BlobUploadOptions options = new BlobUploadOptions()
+        //    {
+        //        HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+        //    };
+        //    if (!blob.Exists())
+        //    {
+        //        await blob.UploadAsync(stream, options);
+        //    }
+        //    return blob.Uri;
 
-        }
+        //}
         public async Task<List<Medicine>> GetExpiredAfterMonth()
         {
 

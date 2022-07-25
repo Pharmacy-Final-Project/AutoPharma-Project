@@ -904,7 +904,7 @@ namespace AutoPharma.Migrations
                             Id = 1,
                             Dose = "250",
                             ExpiredDate = new DateTime(2023, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/panadol.jpg",
                             Information = "This medicine is used as a painkiller",
                             MOHPrice = 3.5,
                             Name = "Panadol"
@@ -914,7 +914,7 @@ namespace AutoPharma.Migrations
                             Id = 2,
                             Dose = "500",
                             ExpiredDate = new DateTime(2022, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Penicillin.jpg",
                             Information = "This medicine is used as a antibiotic",
                             MOHPrice = 17.649999999999999,
                             Name = "Penicillin "
@@ -924,7 +924,7 @@ namespace AutoPharma.Migrations
                             Id = 3,
                             Dose = "180",
                             ExpiredDate = new DateTime(2026, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/FEXON.jpg",
                             Information = "This medicine is used as a Anti-allergic",
                             MOHPrice = 4.9500000000000002,
                             Name = "FEXON"
@@ -934,7 +934,7 @@ namespace AutoPharma.Migrations
                             Id = 4,
                             Dose = "220",
                             ExpiredDate = new DateTime(2024, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DIAXSUSP.jpg",
                             Information = "This medicine is used as a 	Intestinal antiseptic",
                             MOHPrice = 6.9500000000000002,
                             Name = "DIAX SUSP"
@@ -944,7 +944,7 @@ namespace AutoPharma.Migrations
                             Id = 5,
                             Dose = "200",
                             ExpiredDate = new DateTime(2027, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Zithrokan.jpg",
                             Information = "This medicine is used as a Antibiotics",
                             MOHPrice = 1.2,
                             Name = "Zithrokan"
@@ -954,7 +954,7 @@ namespace AutoPharma.Migrations
                             Id = 6,
                             Dose = "500",
                             ExpiredDate = new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Alvedon.jpg",
                             Information = "This medicine is used as a antipyretic",
                             MOHPrice = 2.6000000000000001,
                             Name = "Alvedon"
@@ -964,7 +964,7 @@ namespace AutoPharma.Migrations
                             Id = 7,
                             Dose = "250",
                             ExpiredDate = new DateTime(2025, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/cyclease.jpg",
                             Information = "This medicine is used for cramps",
                             MOHPrice = 4.7000000000000002,
                             Name = "cyclease"
@@ -974,7 +974,7 @@ namespace AutoPharma.Migrations
                             Id = 8,
                             Dose = "400",
                             ExpiredDate = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL.jpg",
                             Information = "This medicine is used for cold",
                             MOHPrice = 1.1000000000000001,
                             Name = "DAYQUIL"
@@ -984,7 +984,7 @@ namespace AutoPharma.Migrations
                             Id = 9,
                             Dose = "200",
                             ExpiredDate = new DateTime(2027, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmastorage.blob.core.windows.net/images/panadol.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Excedrin.jpg",
                             Information = "This medicine is used for headache",
                             MOHPrice = 9.8000000000000007,
                             Name = "Excedrin"
