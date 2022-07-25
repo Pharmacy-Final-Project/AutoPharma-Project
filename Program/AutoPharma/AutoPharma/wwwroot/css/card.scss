@@ -1,0 +1,215 @@
+﻿@mixin absolute($top, $right, $bottom, $left) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@keyframes panning {
+    0% {
+        transform: translateX(-25%) translateY(-25%);
+    }
+
+    20% {
+        width: 250%;
+        transform: translateX(0) translateY(-50%);
+    }
+
+    40% {
+        width: 230%;
+        transform: translateX(-25%) translateY(-50%);
+    }
+
+    60% {
+        width: 210%;
+        transform: translateX(-50%) translateY(-25%);
+    }
+
+    70% {
+        width: 240%;
+        transform: translateX(-25%) translateY(-25%);
+    }
+
+    80% {
+        width: 220%;
+        transform: translateX(-25%) translateY(-50%);
+    }
+
+    100% {
+        width: 210%;
+        transform: translateX(-25%) translateY(-25%);
+    }
+}
+
+@keyframes slideFadeDown {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ecf0f1;
+}
+
+.profile-card {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 80px auto;
+    padding-top: 20%;
+    overflow: hidden;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 1px rgba(#222, .5);
+    transition: box-shadow 1s;
+}
+
+header, .profile-bio {
+    @include absolute(10px, 10px, 10px, 10px);
+    overflow: hidden;
+    line-height: 0;
+}
+
+header {
+    a {
+        @include absolute(0, 0, 0, 0);
+        display: block;
+        z-index: 8;
+        overflow: hidden;
+        border-radius: 10px;
+        line-height: 0;
+
+        img {
+            @include absolute(0, auto, auto, 0);
+            width: 210%;
+            z-index: 3;
+            line-height: 0;
+            animation: panning 50s infinite;
+        }
+
+        &:before {
+            content: "";
+            @include absolute(0, 0, 0, 0);
+            z-index: 4;
+            background-color: rgba(#2c3e50, .5);
+            transition: background-color 1s;
+        }
+
+        ;
+    }
+
+    h1, h2 {
+        @include absolute(40%, 0, auto, 0);
+        z-index: 10;
+        color: white;
+        font-family: Oswald;
+        line-height: 1em;
+        text-transform: uppercase;
+        text-align: center;
+        transition: transform 1s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+    }
+
+    h1 {
+        font-size: 2em;
+        line-height: 1em;
+        letter-spacing: .04em;
+
+        &:after {
+            content: "";
+            display: block;
+            width: 50%;
+            height: 1px;
+            margin: 2px auto;
+            background-color: white;
+        }
+    }
+
+    h2 {
+        top: 50%;
+        font-weight: 300;
+        line-height: 1em;
+        letter-spacing: .22em;
+        animation: slideFadeDown .5s;
+    }
+}
+
+.profile-bio {
+    p {
+        @include absolute(55%, 0, auto, 0);
+        z-index: 12;
+        padding: 0 30px;
+        color: white;
+        font-family: Source Code Pro;
+        line-height: 1.2em;
+        text-align: center;
+        transform: translateX(100%) translateY(-50%);
+        transition: transform 1s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+    }
+}
+
+.profile-social-links {
+    @include absolute(40%, 0, auto, 0);
+    z-index: 12;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(100%) translateY(-50%);
+    transition: transform 1s cubic-bezier(0.785, 0.135, 0.150, 0.860), opacity 1.5s;
+
+    li {
+        display: inline-block;
+        padding: 0 10px;
+
+        a {
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            max-width: 40px;
+            filter: grayscale(100%);
+            transition: transform .5s, filter 5s;
+
+            &:hover {
+                filter: grayscale(0);
+                transform: scale(1.2);
+            }
+        }
+
+        &:nth-child(3) img {
+            filter: invert(60%);
+
+            &:hover {
+                filter: invert(0);
+            }
+        }
+    }
+}
+
+.profile-card:hover {
+    box-shadow: 0 0 20px rgba(#222, .3);
+
+    header a:before {
+        background-color: rgba(#2c3e50, .8);
+    }
+
+    h1, h2 {
+        transform: translateX(-100%);
+    }
+
+    .profile-bio p, .profile-social-links {
+        transform: translateX(0) translateY(-50%);
+        opacity: 1;
+    }
+}

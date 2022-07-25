@@ -7,46 +7,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+      <link rel="stylesheet" href="~/css/card.css">
+            <link rel="stylesheet" href="~/css/card.scss">
 
-<h1>Index</h1>
+      <script src="~/js/card.js"></script>
 
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.City.Name)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<title>Branches</title>
+</head>
+<body>
+
+    <div class="container my-3 bg-light">
+        <div class="col-md-12 text-center">
+<h1>The Branches </h1>
+
+ 
+   <button type="button" class="btn btn-primary">
+  <a asp-action="Create" style="color:black">Create New</a>
+ </button>
+   </div>
+   </div>
+
+
+
+
+        <div class="row">
 @foreach (var item in Model) {
-        <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.City.Name)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+        
+
+  <div class="col-sm-6">
+ <figure class="snip1218">
+  
+ 
+  <figcaption>
+    <h3> @Html.DisplayFor(modelItem => item.Address)</h3>
+    
+    <p>
+     Phone Numbers: @Html.DisplayFor(modelItem => item.Phone)"
+    </p>
+               <button class="btn btn-outline-success mx-1 " type="submit"><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></button>
+               <button class="btn btn-outline-secondary mx-1" type="submit"><a asp-action="Details" asp-route-id="@item.Id">Details</a></button>
+                <button class="btn btn-outline-warning mx-1" type="submit"><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
+                 </figcaption>
+
+
+</figure>
+  </div>
+
+
+      
 }
-    </tbody>
-</table>
+</div>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
