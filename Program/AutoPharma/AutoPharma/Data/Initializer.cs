@@ -38,15 +38,35 @@ namespace AutoPharma.Data
                         UserName = "admin-user",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
-                        BranchId = 1,
-                        CityId = 1,
-                        PhoneNumber = "123456",
+                        PhoneNumber = "123456"
                        
                     };
 
                     await userManager.CreateAsync(newAdminUser, "Admin123!");
                     await userManager.AddToRoleAsync(newAdminUser, Roles.Admin);
                 }
+                // Admin 2
+
+                // Admin
+                string adminUserEmail2 = "admin2@autopharma.com";
+
+                var adminUser2 = await userManager.FindByEmailAsync(adminUserEmail2);
+                if (adminUser2 == null)
+                {
+                    var newAdminUser2 = new ApplicationUser()
+                    {
+
+                        UserName = "admin-user2",
+                        Email = adminUserEmail2,
+                        EmailConfirmed = true,
+                        PhoneNumber = "123456"
+
+                    };
+
+                    await userManager.CreateAsync(newAdminUser2, "Admin123!");
+                    await userManager.AddToRoleAsync(newAdminUser2, Roles.Admin);
+                }
+
                 //Pharmacict => Editor
 
                 string editorUserEmail = "Pharmacist@autopharma.com";

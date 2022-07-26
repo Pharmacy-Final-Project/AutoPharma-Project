@@ -95,6 +95,7 @@ namespace AutoPharma.Controllers
             {
                 return NotFound();
             }
+
             return View(branch);
         }
 
