@@ -95,6 +95,25 @@ namespace AutoPharma.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("AutoPharma.Auth.Model.DTO.PharmacistUserDTO", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PharmacistUserDTO");
+                });
+
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>
                 {
                     b.Property<int>("Id")

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoPharma.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220726072550_init")]
+    [Migration("20220726203856_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,10 +29,10 @@ namespace AutoPharma.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("BranchId")
+                    b.Property<int?>("BranchId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CityId")
+                    b.Property<int?>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -95,6 +95,25 @@ namespace AutoPharma.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("AutoPharma.Auth.Model.DTO.PharmacistUserDTO", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PharmacistUserDTO");
                 });
 
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>
@@ -976,7 +995,7 @@ namespace AutoPharma.Migrations
                             Id = 8,
                             Dose = "400",
                             ExpiredDate = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL1.jpg",
                             Information = "This medicine is used for cold",
                             MOHPrice = 1.1000000000000001,
                             Name = "DAYQUIL"
@@ -1128,9 +1147,7 @@ namespace AutoPharma.Migrations
                 {
                     b.HasOne("AutoPharma.Models.Branch", null)
                         .WithMany("Pharmacists")
-                        .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BranchId");
                 });
 
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>

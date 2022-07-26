@@ -7,24 +7,6 @@
 
 
 
-
-
-<div>
-
-    <select id="CityList" asp-items='ViewBag.CityId'>
-        <option value="-1">Select Country</option>
-    </select>
-
-</div>
-<div>
-
-    <select id="BranchList">
-
-    </select>
-
-</div>
-
-
 <h1>Edit</h1>
 
 <h4>PharmacistUserDTO</h4>
@@ -62,39 +44,6 @@
 </div>
 
 @section Scripts {
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
-
-
-
-    <script>
-
-    $(document).ready(function() {
-        $("#CityList").on("change", function() {
-
-            $.ajax({
-                type: "Post",
-                url: "/Auth/GetState",
-                data: { "CityId": $("#CityList").val() },
-                success: function(response) {
-                    var items = '';
-                    $(respone).each(function() {
-                        items += "<option value=" + this.value + ">" + this.text + "</option>";
-                    })
-
-                    $("#BranchList").html(items);
-                },
-                failure: function(response) {
-                    alert(respone.responeText);
-                },
-                error: function(respone) {
-                    alret(respone.responseText);
-                }
-            });
-        })
-    });
-
-    </script> 
 
 
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

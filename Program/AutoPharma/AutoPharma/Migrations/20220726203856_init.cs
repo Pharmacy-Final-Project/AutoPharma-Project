@@ -68,6 +68,20 @@ namespace AutoPharma.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PharmacistUserDTO",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CityId = table.Column<int>(type: "int", nullable: true),
+                    BranchId = table.Column<int>(type: "int", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PharmacistUserDTO", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -115,8 +129,8 @@ namespace AutoPharma.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BranchId = table.Column<int>(type: "int", nullable: false),
-                    CityId = table.Column<int>(type: "int", nullable: false),
+                    BranchId = table.Column<int>(type: "int", nullable: true),
+                    CityId = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -140,7 +154,7 @@ namespace AutoPharma.Migrations
                         column: x => x.BranchId,
                         principalTable: "Branches",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -317,7 +331,7 @@ namespace AutoPharma.Migrations
                     { 7, "250", new DateTime(2025, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/cyclease.jpg", "This medicine is used for cramps", 4.7000000000000002, "cyclease" },
                     { 6, "500", new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/Alvedon.jpg", "This medicine is used as a antipyretic", 2.6000000000000001, "Alvedon" },
                     { 5, "200", new DateTime(2027, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/Zithrokan.jpg", "This medicine is used as a Antibiotics", 1.2, "Zithrokan" },
-                    { 8, "400", new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL.jpg", "This medicine is used for cold", 1.1000000000000001, "DAYQUIL" },
+                    { 8, "400", new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL1.jpg", "This medicine is used for cold", 1.1000000000000001, "DAYQUIL" },
                     { 3, "180", new DateTime(2026, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/FEXON.jpg", "This medicine is used as a Anti-allergic", 4.9500000000000002, "FEXON" },
                     { 2, "500", new DateTime(2022, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/Penicillin.jpg", "This medicine is used as a antibiotic", 17.649999999999999, "Penicillin " },
                     { 1, "250", new DateTime(2023, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://autopharmafinal.blob.core.windows.net/images/panadol.jpg", "This medicine is used as a painkiller", 3.5, "Panadol" },
@@ -486,6 +500,9 @@ namespace AutoPharma.Migrations
 
             migrationBuilder.DropTable(
                 name: "BranchMedicines");
+
+            migrationBuilder.DropTable(
+                name: "PharmacistUserDTO");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

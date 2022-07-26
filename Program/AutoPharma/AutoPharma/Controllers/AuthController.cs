@@ -33,7 +33,8 @@ namespace AutoPharma.Controllers
         /// </summary>
         /// <param name="loginDTO"></param>
         /// <returns></returns>
-        public async Task<ActionResult<PharmacistUserDTO>> Login(LoginDTO loginDTO)
+        [HttpPost]
+        public async Task<ActionResult<PharmacistUserDTO>> Index(LoginDTO loginDTO)
         {
           
 
