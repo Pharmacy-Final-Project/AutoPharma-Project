@@ -171,6 +171,8 @@ namespace AutoPharma.Data
 
         }
 
+        public DbSet<AutoPharma.Auth.Model.DTO.PharmacistUserDTO> PharmacistUserDTO { get; set; }
+
 
     }
 }

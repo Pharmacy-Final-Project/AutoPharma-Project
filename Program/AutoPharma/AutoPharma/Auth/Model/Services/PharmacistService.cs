@@ -1,10 +1,13 @@
 ﻿using AutoPharma.Auth.Interfaces;
 using AutoPharma.Auth.Model;
 using AutoPharma.Auth.Model.DTO;
+using AutoPharma.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -16,9 +19,11 @@ namespace AutoPharma.Auth
 
         private SignInManager<ApplicationUser> _signInManager;
 
-        public PharmacistService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> SignInMngr)
-        {
+        private readonly AppDbContext _context;
 
+        public PharmacistService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> SignInMngr, AppDbContext context)
+        {
+            _context = context;
             _userManager = userManager;
             _signInManager = SignInMngr;
         }
@@ -80,7 +85,7 @@ namespace AutoPharma.Auth
             var user = await _userManager.GetUserAsync(principal);
             return new PharmacistUserDTO
             {
-                Username = user.UserName
+                Username = user.UserName,
             };
         }
 
@@ -89,9 +94,82 @@ namespace AutoPharma.Auth
             await _signInManager.SignOutAsync();
         }
 
-        //public async Task<List<PharmacistUser>> GetAllPharmacists()
-        //{
-        //    return await _userManager.Users.ToListAsync();
-        //}
+        public async Task<List<PharmacistUserDTO>> GetAllPharmacists()
+        {
+            //users from users database
+            var users = await _userManager.Users.ToListAsync();
+
+            //I return a List<PharmacistUserDTO>, so i need to iterate previous list and create a new list
+
+            List<PharmacistUserDTO> userDTOs = new List<PharmacistUserDTO>();
+
+            foreach (var item in users)
+            {
+                userDTOs.Add(new PharmacistUserDTO
+                {
+                    Id = item.Id,
+                    CityId = item.CityId,
+                    BranchId = item.BranchId,
+                    Username = item.UserName
+                    //FULL NAME!
+
+                }
+                );
+                
+            }
+
+            return userDTOs;
+        }
+
+        public async Task RemovePharmacist(string id)
+        {
+            string convertedId = id;
+
+            var user = await _userManager.Users
+               .Where(x => x.Id == convertedId)
+               .FirstOrDefaultAsync();
+
+            await _userManager.DeleteAsync(user);
+        }
+
+
+        public async Task<PharmacistUserDTO> UpdatePharmacist(string id, PharmacistUserDTO user)
+        {
+            //1- update it
+            //2- return it
+            string convertedId = Convert.ToString(id);
+
+            var appUser = await _userManager.FindByIdAsync(convertedId);
+            appUser.CityId = user.CityId;
+            appUser.BranchId = user.BranchId;
+            appUser.UserName = user.Username;
+
+            var returnedUserDto = new PharmacistUserDTO
+            {
+                Id = appUser.Id,
+                BranchId = appUser.BranchId,
+                CityId = appUser.CityId,
+                Username = appUser.UserName
+            };
+
+            var result = await _userManager.UpdateAsync(appUser);
+
+            return returnedUserDto;
+        }
+
+        public async Task<PharmacistUserDTO> GetPharmacist(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            var returnDto = new PharmacistUserDTO
+            {
+                Id = user.Id,
+                BranchId = user.BranchId,
+                CityId = user.CityId,
+                Username = user.UserName
+            };
+
+            return returnDto;
+        }
     }
 }

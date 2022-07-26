@@ -5,6 +5,7 @@ using AutoPharma.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -86,5 +87,44 @@ namespace AutoPharma.Controllers
             ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address", register.BranchId);
 
         }
+
+
+
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+
+            ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Address");
+
+
+            PharmacistUserDTO updatePharmacist = await _pharmacist.GetPharmacist(id);
+
+            return View(updatePharmacist);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string id, PharmacistUserDTO user)
+        {
+            
+            PharmacistUserDTO updatedUser = await _pharmacist.UpdatePharmacist(user.Id, user);
+            return RedirectToAction("Details", "Branches", new {id = user.BranchId});
+        }
+
+        [HttpPost]
+        public JsonResult GetState(int CityId)
+        {
+            var BranchList = _context.Branches.Where(x => x.CityId == CityId);
+
+            return Json(new SelectList(BranchList, "Id", "Address"));
+        }
+
+
+
+
+
+
+
     }
 }
