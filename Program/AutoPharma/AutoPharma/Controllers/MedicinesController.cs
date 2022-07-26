@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoPharma.Controllers
 {
@@ -30,14 +31,16 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Medicines
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var medicineList = await _medicine.GetAllMedicine();
             return View(medicineList);
         }
-        
+
 
         // GET: Medicines/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,6 +58,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Medicines/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -65,6 +69,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create( Medicine medicine, IFormFile file)
         {
             //if (ModelState.IsValid)
@@ -100,6 +105,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Medicines/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -120,6 +126,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id,Medicine medicine, IFormFile file)
         {
 
@@ -145,6 +152,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Medicines/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -164,6 +172,7 @@ namespace AutoPharma.Controllers
         // POST: Medicines/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _medicine.DeleteMedicine(id);
@@ -179,6 +188,8 @@ namespace AutoPharma.Controllers
             }
             else return true;
         }
+
+
         public async Task<IActionResult> GetExpiredAfterMonth()
         {
             var medicineList = await _medicine.GetExpiredAfterMonth();

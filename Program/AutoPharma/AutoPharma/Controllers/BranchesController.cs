@@ -11,6 +11,7 @@ using AutoPharma.Models.Interfaces;
 using System.Dynamic;
 using Microsoft.AspNetCore.Identity;
 using AutoPharma.Auth.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoPharma.Controllers
 {
@@ -27,8 +28,9 @@ namespace AutoPharma.Controllers
             _city = city;
             _context = context;
         }
-      
+
         // GET: Branches
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Index()
         {
             var branchList = await _branch.GetAllBranches();
@@ -36,6 +38,7 @@ namespace AutoPharma.Controllers
         }
 
         //GET: Branches/Details/5
+        [Authorize(Roles = "Admin, Pharmacist")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -51,9 +54,11 @@ namespace AutoPharma.Controllers
 
             return View(branch);
         }
-      
+
 
         // GET: Branches/Create
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Create()
         {
             ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
@@ -67,6 +72,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,CityId,Address,Phone")] Branch branch)
         {
             
@@ -83,6 +89,8 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Branches/Edit/5
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -104,6 +112,8 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Edit(int id, [Bind("Id,City,Address,Phone")] Branch branch)
         {
             if (id != branch.Id)
@@ -134,6 +144,8 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Branches/Delete/5
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -153,6 +165,8 @@ namespace AutoPharma.Controllers
         // POST: Branches/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
 

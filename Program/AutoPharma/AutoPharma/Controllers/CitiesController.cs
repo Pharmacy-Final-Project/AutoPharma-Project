@@ -22,6 +22,8 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Cities
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Index()
         {
             var citiesList = await _city.GetAllCities();
@@ -29,6 +31,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Cities/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,6 +49,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Cities/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -57,6 +61,7 @@ namespace AutoPharma.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name")] City city)
         {
             if (ModelState.IsValid)
@@ -68,6 +73,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Cities/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +94,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] City city)
         {
             if (id != city.Id)
@@ -118,6 +125,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Cities/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +145,7 @@ namespace AutoPharma.Controllers
         // POST: Cities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _city.DeleteCity(id);
