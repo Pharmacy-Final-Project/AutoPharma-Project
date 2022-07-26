@@ -36,9 +36,10 @@ namespace AutoPharma.Auth
             };
             // this line is to add this registersd user to the editor(pharmacist) Role
             var result = await _userManager.CreateAsync(user, registerDto.Password);
-           await _userManager.AddToRoleAsync(user, Roles.Editor);
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, Roles.Editor);
+
                 // here goes the roles specifications ... 
                 return new PharmacistUserDTO
                 {

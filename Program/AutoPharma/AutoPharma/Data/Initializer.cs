@@ -76,7 +76,7 @@ namespace AutoPharma.Data
                 {
                     var newEditorUser = new ApplicationUser()
                     {
-
+                        FullName="Hanan Nathem Saadeh",
                         UserName = "PharmacistUser-user",
                         Email = editorUserEmail,
                         EmailConfirmed = true,
@@ -88,6 +88,28 @@ namespace AutoPharma.Data
                     };
                     await userManager.CreateAsync(newEditorUser, "Pharmacist123!");
                     await userManager.AddToRoleAsync(newEditorUser, Roles.Editor);
+                }
+                //Pharmacict => Editor
+
+                string editorUserEmail2 = "Pharmacist2@autopharma.com";
+
+                var editorUser2 = await userManager.FindByEmailAsync(editorUserEmail2);
+                if (editorUser2 == null)
+                {
+                    var newEditorUser2 = new ApplicationUser()
+                    {
+                        FullName = "Shadi Aslan",
+                        UserName = "PharmacistUser-user2",
+                        Email = editorUserEmail2,
+                        EmailConfirmed = true,
+                        BranchId =3,
+                        CityId = 1,
+                        PhoneNumber = "12345"
+
+
+                    };
+                    await userManager.CreateAsync(newEditorUser2, "Pharmacist123!");
+                    await userManager.AddToRoleAsync(newEditorUser2, Roles.Editor);
                 }
             }
         }

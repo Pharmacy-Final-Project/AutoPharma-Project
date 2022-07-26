@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoPharma.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220726121153_init")]
+    [Migration("20220726135915_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
