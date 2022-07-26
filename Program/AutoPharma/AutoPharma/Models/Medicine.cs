@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutoPharma.Models
 {
@@ -9,6 +10,7 @@ namespace AutoPharma.Models
         public string Name { get; set; }
         public string Dose { get; set; }
         public string ImageUri { get; set; }
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}")]
         public DateTime ExpiredDate { get; set; }
 
         //MOH: Ministry of Health

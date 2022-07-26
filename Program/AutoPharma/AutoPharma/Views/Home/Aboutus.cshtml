@@ -1,11 +1,43 @@
-﻿
+﻿@using AutoPharma.Auth.Model
 
-<div class="bg-light">
+@{
+    Layout = "_Layout";
+  }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pharma — Colorlib Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/about.css">
+  <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+
+  <link rel="stylesheet" href="css/aos.css">
+
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0">
+
+
+    <div class="bg-light">
   <div class="container py-5">
     <div class="row h-100 align-items-center py-5">
       <div class="col-lg-6">
         <h1 class="display-4">About us page</h1>
         <p class="lead text-muted mb-0">AUTO-PHARMA An online pharmacy for all your needs.</p>     
+        <p class="lead text-muted mb-0"> Our purpose is to help our customers look and feel better than they ever thought possible, because your health is our priority.</p>     
+        <p class="lead text-muted mb-0">   We take pride in delivering exceptional service to every customer. Our friendly and highly skilled team are here to meet all your pharmacy needs, we are here for you every step of the way.</p>     
         
       </div>
       <div class="col-lg-6 d-none d-lg-block"><img src="/Assest/111.jpg" alt="" class="img-fluid"></div>
@@ -13,38 +45,36 @@
   </div>
 </div>
 
-<div class="bg-white py-5">
-  <div class="container py-5">
-    <div class="row align-items-center mb-5">
-      <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">Featured</h2>
-        <p class="font-italic text-muted mb-4">A site that helps you find medicine very quickly, the nearest branch to you</p>
-      </div>
-      <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="/Assest/333.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
-    </div>
-    <div class="row align-items-center">
-      <div class="col-lg-5 px-5 mx-auto"><img src="/Assest/222.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
-      <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">pharmacys </h2>
-        <p class="font-italic text-muted mb-4">Organization of the structure and construction of the pharmacy<p/>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="bg-light py-5">
-  <div class="container py-5">
-    <div class="row mb-4">
-      <div class="col-lg-5">
-        <h2 class="display-4 font-weight-light">Our team</h2>
-        <p class="font-italic text-muted">we work in a pharmacy management system  in asp .net core.</p>
+    <div class="site-section bg-light custom-border-bottom aos-init" data-aos="fade">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <div class="block-16">
+              <figure>
+                <img src="https://autopharmafinal.blob.core.windows.net/images/bg_1.jpg" alt="Image placeholder" class="img-fluid rounded">
+    
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+    
+    
+            <div class="site-section-heading pt-3 mb-4">
+              <h2 class="text-black">Auto Pharma</h2>
+            </div>
+            <p>
+Auto Pharma is Accredited with - International Quality Certification, We  offers genuine medicines round-the-clock, through our 24-hour Pharmacies. Auto Oharma Pharmacy also provides customer care any time of the day! Quality is the cornerstone of our existence. We have gained experience in pharmacy operations management over the last 2 decades and are committed to delivering best service in the industry.</p>
+           
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="row text-center">
+   <div class="row text-center">
       <!-- Team item-->
       <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/Shadi.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/Shadi.jpg" alt="" style="width:80px; height:100px"  class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Shadi Aslan</h5><span class="small text-uppercase text-muted">.Net Developer</span>
       
         </div>
@@ -53,32 +83,50 @@
 
       <!-- Team item-->
       <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/waseem.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/waseem.jpg" alt="" style="width:80px; height:100px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Waseem Abuameer</h5><span class="small text-uppercase text-muted">.Net Developer</span>
       
         </div>
       </div>
       <!-- End-->
           <!-- Team item-->
-      <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/Hanan.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-          <h5 class="mb-0">Hanan Nathem Saadeh</h5><span class="small text-uppercase text-muted">.Net Developer</span>
+            <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/Hanan.jpg" alt="" style="width:80px; height:100px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+          <h5 class="mb-0">Hanan Saadeh</h5><span class="small text-uppercase text-muted">.Net Developer</span>
       
         </div>
       </div>
       <!-- End-->
           <!-- Team item-->
       <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/Assest/Yousef.jpg" alt="" style="width:80px; height:100px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Yousef Samara</h5><span class="small text-uppercase text-muted">.Net Developer</span>
       
         </div>
       </div>
+      </div>
       <!-- End-->
+ 
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+
+    <script src="js/main.js"></script>
 
 
-    </div>
-  </div>
-</div>
+
+</body>
+
+
+
+
+
+</html>
+
 
 

@@ -35,12 +35,24 @@ namespace AutoPharma.Controllers
         /// <returns></returns>
         public async Task<ActionResult<PharmacistUserDTO>> Login(LoginDTO loginDTO)
         {
-            //needs error handling
+          
 
-            await _pharmacist.Authenticate(loginDTO.Username, loginDTO.Password);
+           var user = await _pharmacist.Authenticate(loginDTO.Username, loginDTO.Password);
+
+            if (user == null)
+            {
+              
+                return View("Index", loginDTO);
+
+            }
+            else
+            {
 
 
-            return Redirect("/Home/Index");
+                return View("Index", loginDTO);
+
+            }
+
         }
 
         public async Task<IActionResult> Logout()

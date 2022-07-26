@@ -38,15 +38,35 @@ namespace AutoPharma.Data
                         UserName = "admin-user",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
-                        BranchId = 1,
-                        CityId = 1,
-                        PhoneNumber = "123456",
+                        PhoneNumber = "123456"
                        
                     };
 
                     await userManager.CreateAsync(newAdminUser, "Admin123!");
                     await userManager.AddToRoleAsync(newAdminUser, Roles.Admin);
                 }
+                // Admin 2
+
+                // Admin
+                string adminUserEmail2 = "admin2@autopharma.com";
+
+                var adminUser2 = await userManager.FindByEmailAsync(adminUserEmail2);
+                if (adminUser2 == null)
+                {
+                    var newAdminUser2 = new ApplicationUser()
+                    {
+
+                        UserName = "admin-user2",
+                        Email = adminUserEmail2,
+                        EmailConfirmed = true,
+                        PhoneNumber = "123456"
+
+                    };
+
+                    await userManager.CreateAsync(newAdminUser2, "Admin123!");
+                    await userManager.AddToRoleAsync(newAdminUser2, Roles.Admin);
+                }
+
                 //Pharmacict => Editor
 
                 string editorUserEmail = "Pharmacist@autopharma.com";
@@ -56,7 +76,7 @@ namespace AutoPharma.Data
                 {
                     var newEditorUser = new ApplicationUser()
                     {
-
+                        FullName="Hanan Nathem Saadeh",
                         UserName = "PharmacistUser-user",
                         Email = editorUserEmail,
                         EmailConfirmed = true,
@@ -68,6 +88,28 @@ namespace AutoPharma.Data
                     };
                     await userManager.CreateAsync(newEditorUser, "Pharmacist123!");
                     await userManager.AddToRoleAsync(newEditorUser, Roles.Editor);
+                }
+                //Pharmacict => Editor
+
+                string editorUserEmail2 = "Pharmacist2@autopharma.com";
+
+                var editorUser2 = await userManager.FindByEmailAsync(editorUserEmail2);
+                if (editorUser2 == null)
+                {
+                    var newEditorUser2 = new ApplicationUser()
+                    {
+                        FullName = "Shadi Aslan",
+                        UserName = "PharmacistUser-user2",
+                        Email = editorUserEmail2,
+                        EmailConfirmed = true,
+                        BranchId =3,
+                        CityId = 1,
+                        PhoneNumber = "12345"
+
+
+                    };
+                    await userManager.CreateAsync(newEditorUser2, "Pharmacist123!");
+                    await userManager.AddToRoleAsync(newEditorUser2, Roles.Editor);
                 }
             }
         }

@@ -2,6 +2,7 @@
 using AutoPharma.Auth.Model;
 using AutoPharma.Auth.Model.DTO;
 using AutoPharma.Data;
+using AutoPharma.Data.Static;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -38,11 +39,12 @@ namespace AutoPharma.Auth
                 BranchId = registerDto.BranchId
                 
             };
-
+            // this line is to add this registersd user to the editor(pharmacist) Role
             var result = await _userManager.CreateAsync(user, registerDto.Password);
-            // role   await userManager.AddToRoleAsync(newAdminUser, Roles.Admin);
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, Roles.Editor);
+
                 // here goes the roles specifications ... 
                 return new PharmacistUserDTO
                 {

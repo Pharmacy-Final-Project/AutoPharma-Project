@@ -17,7 +17,7 @@ namespace AutoPharma.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<City> Cities { get; set; }
         //public DbSet<RegisterDTO> Pharmacists { get; set; }
-      
+
 
 
         public AppDbContext(DbContextOptions options) : base(options)
@@ -51,7 +51,7 @@ namespace AutoPharma.Data
               new Medicine { Id = 5, Name = "Zithrokan", Dose = "200", Information = "This medicine is used as a Antibiotics", MOHPrice = 1.2, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Zithrokan.jpg", ExpiredDate = new DateTime(2027, 02, 01) },
               new Medicine { Id = 6, Name = "Alvedon", Dose = "500", Information = "This medicine is used as a antipyretic", MOHPrice = 2.6, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Alvedon.jpg", ExpiredDate = new DateTime(2024, 09, 12) },
               new Medicine { Id = 7, Name = "cyclease", Dose = "250", Information = "This medicine is used for cramps", MOHPrice = 4.7, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/cyclease.jpg", ExpiredDate = new DateTime(2025, 04, 19) },
-              new Medicine { Id = 8, Name = "DAYQUIL", Dose = "400", Information = "This medicine is used for cold", MOHPrice = 1.1, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL.jpg", ExpiredDate = new DateTime(2023, 03, 14) },
+              new Medicine { Id = 8, Name = "DAYQUIL", Dose = "400", Information = "This medicine is used for cold", MOHPrice = 1.1, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL1.jpg", ExpiredDate = new DateTime(2023, 03, 14) },
               new Medicine { Id = 9, Name = "Excedrin", Dose = "200", Information = "This medicine is used for headache", MOHPrice = 9.8, ImageUri = "https://autopharmafinal.blob.core.windows.net/images/Excedrin.jpg", ExpiredDate = new DateTime(2027, 01, 11) }
 
 
@@ -154,19 +154,19 @@ namespace AutoPharma.Data
                 );
 
             modelBuilder.Entity<City>().HasData(
-                new City { Id = 1, Name = "Amman"},
-                new City { Id = 2, Name = "Zarqa"},
-                new City { Id = 3, Name = "Irbid"},
-                new City { Id = 4, Name = "Aqaba"},
+                new City { Id = 1, Name = "Amman" },
+                new City { Id = 2, Name = "Zarqa" },
+                new City { Id = 3, Name = "Irbid" },
+                new City { Id = 4, Name = "Aqaba" },
                 new City { Id = 5, Name = "Maadaba" },
-                new City { Id = 6, Name = "Al-Balqaa"},
+                new City { Id = 6, Name = "Al-Balqaa" },
                 new City { Id = 7, Name = "Mafraq" },
                 new City { Id = 8, Name = "Jerash" },
                 new City { Id = 9, Name = "Ma'an" },
                 new City { Id = 10, Name = "Al-Tafila" },
                 new City { Id = 11, Name = "Al-Karak" },
-                new City { Id = 12, Name = "Ajloun"}
-                
+                new City { Id = 12, Name = "Ajloun" }
+
                 );
 
         }
