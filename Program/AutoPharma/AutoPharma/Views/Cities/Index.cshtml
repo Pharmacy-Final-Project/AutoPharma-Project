@@ -14,22 +14,31 @@
    </div>
    </div>
 <div class="row">
-@foreach (var item in Model) {
-     
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h5>
-       
-       <button type="button" class="btn btn-success"><a style="color:black" asp-action="Edit" asp-route-id="@item.Id">Edit</a> </button>|
-             <button type="button" class="btn btn-info">   <a style="color:black" asp-action="Details" asp-route-id="@item.Id">Details</a></button> |
-              <button type="button" class="btn btn-danger">  <a  style="color:black" asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
-      </div>
-    </div>
-  </div>
+    @foreach (var item in Model)
+    {
 
+    @*<div class="card bg-light mb-3" style="max-width: 25rem;">
+        
+        <div class="card-body">*@
 
-}
-</div>
+            <div class="col-sm-6">
+                <figure class="snip1218">
+
+                    <figcaption>
+
+                        <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h5>
+
+                        <button type="button" class="btn btn-outline-success mx-1 "><a style="color:black" asp-action="Edit" asp-route-id="@item.Id">Edit</a> </button>|
+                        <button type="button" class="btn btn-outline-secondary mx-1">   <a style="color:black" asp-action="Details" asp-route-id="@item.Id">Details</a></button> |
+                        <button type="button" class="btn btn-outline-warning mx-1">  <a style="color:black" asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
+                    </figcaption>
+                </figure>
+            </div>
+        @*</div>
+
+    </div>*@
+
+                }
+            </div>
 
 

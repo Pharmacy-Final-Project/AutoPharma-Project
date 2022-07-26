@@ -213,3 +213,10 @@ header {
         opacity: 1;
     }
 }
+
+#card-headers {
+    padding: 0.75rem 0.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
