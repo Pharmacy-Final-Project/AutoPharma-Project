@@ -16,14 +16,19 @@ namespace AutoPharma.Auth.Interfaces
         // These functions will be called by the admin to manage pharmacists
         public Task<PharmacistUserDTO> Register(PharmacistRegisterDTO registerData, ModelStateDictionary modelState);
 
+
+        // ??????????????????????????????????????????????????????????
         public Task<PharmacistUserDTO> GetPharmacist(ClaimsPrincipal principal);
        
 
 
-        // We will implement these later
-        //public Task<List<PharmacistUser>> GetAllPharmacists();
-        //public Task<UserDTO> RemovePharmacist();
-        //public Task<UserDTO> MovePharmacistToNewBranch(int cityId, int branchId); //maybe here we need to pass the pharmacist object too
+        // CRUD
+        public Task<List<PharmacistUserDTO>> GetAllPharmacists();
+        public Task RemovePharmacist(string id);
+        public Task<PharmacistUserDTO> UpdatePharmacist(string id, PharmacistUserDTO user);
+
+        public Task<PharmacistUserDTO> GetPharmacist(string id);
+
 
 
 

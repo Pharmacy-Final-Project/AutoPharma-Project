@@ -91,7 +91,10 @@
                         @Html.DisplayFor(x => pharmacist.Email)
                     </td>
                     <td>
-                        edit/delete/details
+                        <a asp-controller="Auth" asp-action="Edit" asp-route-id="@pharmacist.Id">EDIT</a>
+                    </td>
+                    <td>
+                        
                     </td>
                 </tr>
             }

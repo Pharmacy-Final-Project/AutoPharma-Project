@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+
+    <PackageReference Include="AjaxControlToolkit" Version="20.1.0" />
+
     <None Include="wwwroot\fonts\icomoon\demo-files\demo.js" />
     <None Include="wwwroot\fonts\icomoon\fonts\icomoon.svg" />
     <None Include="wwwroot\scss\bootstrap\.DS_Store" />
@@ -94,6 +97,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <PackageReference Include="Azure.Storage.Blobs" Version="12.13.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
