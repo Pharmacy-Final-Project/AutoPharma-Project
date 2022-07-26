@@ -27,10 +27,10 @@ namespace AutoPharma.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("BranchId")
+                    b.Property<int?>("BranchId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CityId")
+                    b.Property<int?>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -974,7 +974,7 @@ namespace AutoPharma.Migrations
                             Id = 8,
                             Dose = "400",
                             ExpiredDate = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL.jpg",
+                            ImageUri = "https://autopharmafinal.blob.core.windows.net/images/DAYQUIL1.jpg",
                             Information = "This medicine is used for cold",
                             MOHPrice = 1.1000000000000001,
                             Name = "DAYQUIL"
@@ -1126,9 +1126,7 @@ namespace AutoPharma.Migrations
                 {
                     b.HasOne("AutoPharma.Models.Branch", null)
                         .WithMany("Pharmacists")
-                        .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BranchId");
                 });
 
             modelBuilder.Entity("AutoPharma.Models.Branch", b =>

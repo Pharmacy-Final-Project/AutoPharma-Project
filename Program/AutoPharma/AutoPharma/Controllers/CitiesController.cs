@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoPharma.Data;
 using AutoPharma.Models;
 using AutoPharma.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoPharma.Controllers
 {
@@ -53,6 +54,7 @@ namespace AutoPharma.Controllers
         // POST: Cities/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] City city)

@@ -5,12 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1>Edit Branch</h1>
 
-<h4>Branch</h4>
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<section class="vh-100" style="background-color: #eee;" >
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -30,14 +36,21 @@
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-warning mx-1" />
             </div>
         </form>
+ </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-outline-success mx-1 ">Back to List</a>
 </div>
 
 @section Scripts {
