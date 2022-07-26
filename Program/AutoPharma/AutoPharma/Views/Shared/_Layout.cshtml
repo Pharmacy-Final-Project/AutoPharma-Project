@@ -43,91 +43,57 @@
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Aboutus">About us</a>
                         </li>
+                        
                    
-                        <li class="nav-item">
+
+                        
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Pharmacist"))
+                        {
+                            @if (@ViewData["Bool"] != null)
+                            {
+                                <a class="nav-link text-dark" asp-controller="Branches" asp-route-id="@ViewData["Title"]" asp-action="Details">My Branch</a>
+                            }
+                        }
+                        
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Branches" asp-action="Index">Branches</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="BranchMedicines" asp-action="Index">BranchMedicines</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Locations" asp-action="Index">Locations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cities" asp-action="Index">Cities</a>
-                        </li>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="BranchMedicines" asp-action="Index">BranchMedicines</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Locations" asp-action="Index">Locations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cities" asp-action="Index">Cities</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Add Pharmacist</a>
+                            </li>
+                        }
 
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Login</a>
                             </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Sign Up</a>
-                                </li>
-                            }
                         }
-                        else
+                        @if (User.Identity.IsAuthenticated)
                         {
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Log out</a>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark">Hello @User.Identity.Name</a>
-
-                        </li>
-                    @if (@ViewData["Bool"] != null)
-                    {
-                        <a class="nav-link text-dark" asp-controller="Branches" asp-route-id="@ViewData["Title"]" asp-action="Details">My Branch</a>
-                            
-                    }
-
-
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark">Hello, @User.Identity.Name !</a>
-
-                            </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Add new pharmacist</a>
-                                </li>
-                            }
                         }
 
-
-
-
-                        @*@if (SignInMngr.IsSignedIn(User))
-                            {
-
-
-
-
-                            }
-                            else
-                            {
-
-                            }*@
-
-
-
-
+                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Create Pharmacist</a>
-                        </li>
-                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="SortByExpirationDate">Expired</a>
                         </li>
 

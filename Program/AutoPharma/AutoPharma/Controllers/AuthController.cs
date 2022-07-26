@@ -28,11 +28,14 @@ namespace AutoPharma.Controllers
         {
             return View();
         }
+
+
         /// <summary>
         /// Will be called by the pharmacist to log into the system
         /// </summary>
         /// <param name="loginDTO"></param>
         /// <returns></returns>
+        
         [HttpPost]
         public async Task<ActionResult<PharmacistUserDTO>> Index(LoginDTO loginDTO)
         {

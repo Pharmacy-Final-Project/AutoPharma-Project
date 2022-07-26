@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoPharma.Data;
 using AutoPharma.Models;
 using AutoPharma.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoPharma.Controllers
 {
@@ -21,6 +22,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Locations
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var locationList = await _location.GetAllLocations();
@@ -28,6 +30,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Locations/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,6 +48,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Locations/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -55,6 +59,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,BranchId,Cabinet,Shelf")] Location location)
         {
             if (ModelState.IsValid)
@@ -66,6 +71,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Locations/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +92,7 @@ namespace AutoPharma.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,BranchId,Cabinet,Shelf")] Location location)
         {
             if (id != location.Id)
@@ -116,6 +123,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Locations/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +143,7 @@ namespace AutoPharma.Controllers
         // POST: Locations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _location.DeleteLocation(id);
