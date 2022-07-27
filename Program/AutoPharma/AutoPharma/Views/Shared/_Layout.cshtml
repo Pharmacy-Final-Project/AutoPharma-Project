@@ -6,25 +6,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>AUTO-PHARMA</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AUTO-PHARMA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewData["Title"] - AutoPharma</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-      <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <link rel="stylesheet" href="css/jquery-ui.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 
-  <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/aos.css">
 
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
@@ -40,27 +40,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Aboutus">About us</a>
                         </li>
-                        
-                   
 
-                        
+
+
+
 
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Pharmacist"))
                         {
+
                             @if (@ViewData["Bool"] != null)
                             {
                                 <a class="nav-link text-dark" asp-controller="Branches" asp-route-id="@ViewData["Title"]" asp-action="Details">My Branch</a>
                             }
                         }
-                        
+
 
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Branches" asp-action="Index">Branches</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Branches" asp-action="Index">Branches</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="BranchMedicines" asp-action="Index">BranchMedicines</a>
@@ -82,7 +83,7 @@
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Login</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Log in</a>
                             </li>
                         }
                         @if (User.Identity.IsAuthenticated)
@@ -92,7 +93,7 @@
                             </li>
                         }
 
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="SortByExpirationDate">Expired</a>
                         </li>

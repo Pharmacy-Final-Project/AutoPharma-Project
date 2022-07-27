@@ -10,7 +10,7 @@ namespace AutoPharma.Auth.Interfaces
     public interface IUser
     {
         // These functions will be called by the pharmasist himself
-        public Task<UserDTO> Authenticate(string username, string password);
+        public Task<PharmacistUserDTO> Authenticate(string username, string password);
         public Task Logout();
 
         // These functions will be called by the admin to manage pharmacists

@@ -1,40 +1,18 @@
-﻿@model AutoPharma.Auth.Model.ApplicationUser
+﻿
 
+@using AutoPharma.Auth.Model
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> signInManager;
+@inject UserManager<ApplicationUser> userManager;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
-    @if (@Model != null)
-    {
-        ViewData["Bool"] = true;
-        ViewData["Title"] = @Model.BranchId;
-    }
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-  <title>AUTO-PHARMA</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@ViewData["Title"] - AutoPharma</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-      <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <link rel="stylesheet" href="css/jquery-ui.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-
-  <link rel="stylesheet" href="css/aos.css">
-
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0">
+  
 
 
     <div class="site-blocks-cover" style="background-image: url('images/hero_1.jpg');">
@@ -202,17 +180,4 @@
     </footer>
 
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
 
-    <script src="js/main.js"></script>
-
-
-
-</body>
-</html>
