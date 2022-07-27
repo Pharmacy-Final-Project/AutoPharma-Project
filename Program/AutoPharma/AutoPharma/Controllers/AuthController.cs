@@ -23,29 +23,24 @@ namespace AutoPharma.Controllers
             _context = context;
         }
 
-        
+
         public IActionResult Index()
         {
             return View();
         }
-
-
         /// <summary>
         /// Will be called by the pharmacist to log into the system
         /// </summary>
         /// <param name="loginDTO"></param>
         /// <returns></returns>
-        
-        [HttpPost]
-        public async Task<ActionResult<PharmacistUserDTO>> Index(LoginDTO loginDTO)
+        /// 
+       
+        public async Task<ActionResult<PharmacistUserDTO>> Login(LoginDTO loginDTO)
         {
-          
-
-           var user = await _pharmacist.Authenticate(loginDTO.Username, loginDTO.Password);
-
+            var user = await _pharmacist.Authenticate(loginDTO.Username, loginDTO.Password);
             if (user == null)
             {
-              
+               
                 return View("Index", loginDTO);
 
             }
@@ -53,11 +48,11 @@ namespace AutoPharma.Controllers
             {
 
 
-                return View("Index", loginDTO);
 
+                return RedirectToAction("Index","Home");
             }
-
         }
+
 
         public async Task<IActionResult> Logout()
         {

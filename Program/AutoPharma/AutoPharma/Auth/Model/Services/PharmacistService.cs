@@ -64,7 +64,7 @@ namespace AutoPharma.Auth
             }
             return null;
         }
-        public async Task<UserDTO> Authenticate(string username, string password)
+        public async Task<PharmacistUserDTO> Authenticate(string username, string password)
         {
             // check and map password and user name to log in
             var result = await _signInManager.PasswordSignInAsync(username, password, true, false);
@@ -73,7 +73,7 @@ namespace AutoPharma.Auth
             {
                 // if log in succeed then return the user name
                 var user = await _userManager.FindByNameAsync(username);
-                return new UserDTO
+                return new PharmacistUserDTO
                 {
                     Username = user.UserName
                 };
