@@ -31,7 +31,7 @@ namespace AutoPharma.Controllers
         }
 
         // GET: Medicines
-        [Authorize(Roles = "Admin")]
+       
         public async Task<IActionResult> Index()
         {
             var medicineList = await _medicine.GetAllMedicine();
@@ -40,7 +40,7 @@ namespace AutoPharma.Controllers
 
 
         // GET: Medicines/Details/5
-        [Authorize(Roles = "Admin")]
+      //  [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

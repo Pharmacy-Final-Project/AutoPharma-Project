@@ -11,8 +11,16 @@
 <h1>Sign In</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
+    <div style="font-size:16px" asp-validation-summary="All"></div>
+
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <p>Log in to your acount</p>
         <form asp-controller="Auth" asp-action="Login"  method="post" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -31,8 +39,12 @@
                 <a class ="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
             </div>
         </form>
+         </div>
     </div>
-</div>
+  </div>
+
+</section>
+
 
 <div>
     <a asp-controller="Home" asp-action="Index">Back to List</a>

@@ -24,13 +24,13 @@
         <form asp-action="SignUp">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CityId" class="control-label"></label>
+                <label asp-for="CityId" class="control-label"> City Name</label>
                 <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
 
             </div>           
 
             <div class="form-group">
-                <label asp-for="BranchId" class="control-label"></label>
+                <label asp-for="BranchId" class="control-label"> Branch Name</label>
                 <select asp-for="BranchId" class ="form-control" asp-items="ViewBag.BranchId"></select>
             </div>
 
@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password"type="password"  class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">

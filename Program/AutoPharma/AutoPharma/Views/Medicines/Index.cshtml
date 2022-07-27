@@ -1,40 +1,51 @@
-﻿@model IEnumerable<AutoPharma.Models.Medicine>
+﻿@using AutoPharma.Auth.Model
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInMngr;
+@inject UserManager<ApplicationUser> userManager;
+@model IEnumerable<AutoPharma.Models.Medicine>
 @using AutoPharma.Models
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container my-3 bg-light">
-        <div class="col-md-12 text-center">
-<h1>Medicines List</h1>
+    <div class="col-md-12 text-center">
+        <h1>Medicines List</h1>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
 
-<p>
-   <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Create">Create New</a></button>
-</div>
+            <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Create">Create New</a></button>
+        }
+    </div>
 </div>
 <div class="row">
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <div class="col-sm-3">
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" style="height : 300px" src="@item.ImageUri" alt="Card image cap">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="height : 300px" src="@item.ImageUri" alt="Card image cap">
 
 
-  <div class="card-body">
-    
-    <h4 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h4>
-    <h6 class="card-title"> Count:  @Html.DisplayFor(modelItem => item.Dose)  </h6>
-    <h6 class="card-title">   @Html.DisplayFor(modelItem => item.MOHPrice)  JD</h6>
+                <div class="card-body">
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-outline-success mx-1 "><a style="color:black" asp-action="Edit" asp-route-id="@item.Id">Edit</a></button>
-  <button type="button" class="btn btn-outline-secondary mx-1"><a style="color:black" asp-action="Details" asp-route-id="@item.Id">Details</a></button>
-  <button type="button" class="btn btn-outline-warning mx-1"><a  style="color:black" asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
-</div>
-  </div>
-</div>
-</div>
-}
+                    <h4 class="card-title"> @Html.DisplayFor(modelItem => item.Name)</h4>
+                    <h6 class="card-title"> Count:  @Html.DisplayFor(modelItem => item.Dose)  </h6>
+                    <h6 class="card-title">   @Html.DisplayFor(modelItem => item.MOHPrice)  JD</h6>
+
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <button type="button" class="btn btn-outline-success mx-1 "><a style="color:black" asp-action="Edit" asp-route-id="@item.Id">Edit</a></button>
+                            <button type="button" class="btn btn-outline-warning mx-1"><a style="color:black" asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
+                        }
+                        <button type="button" class="btn btn-outline-secondary mx-1"><a style="color:black" asp-action="Details" asp-route-id="@item.Id">Details</a></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 

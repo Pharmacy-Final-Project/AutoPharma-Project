@@ -38,9 +38,9 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
 
-                        
-                   
-                        
+
+
+
 
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Pharmacist"))
                         {
@@ -50,12 +50,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Aboutus">About us</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Branches" asp-action="Details">My Branch</a>
+                            </li>
 
-
-                            @if (@ViewData["Bool"] != null)
-                            {
+                            @* @if (@ViewData["Bool"] != null)
+                                {
                                 <a class="nav-link text-dark" asp-controller="Branches" asp-route-id="@ViewData["Title"]" asp-action="Details">My Branch</a>
-                            }
+                                }*@
                         }
 
 
@@ -65,10 +67,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Branches" asp-action="Index">Branches</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="BranchMedicines" asp-action="Index">BranchMedicines</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="BranchMedicines" asp-action="Index">Branch Medicines</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Locations" asp-action="Index">Locations</a>
@@ -76,50 +75,68 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Cities" asp-action="Index">Cities</a>
                             </li>
+
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">Add Pharmacist</a>
                             </li>
+
+
+
                         }
 
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
+                        <li class="nav-item">
 
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Aboutus">About us</a>
                         </li>
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="BranchMedicines" asp-     action="Index">BranchMedicines</a>
-                                </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Login</a>
-
-                            </li>
-                        }
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Log out</a>
-                            </li>
-                        }
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="SortByExpirationDate">Expired</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="Index">Medicines</a>
                         </li>
 
 
-
-
-
-
+                        @*  <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Medicines" asp-action="SortByExpirationDate">Expired</a>
+                            </li>*@
 
                     </ul>
+
+                    <div style="padding-top:10px; position:absolute; top:10px; right:100px">
+                        <!-- SignInMngr -->
+                        <ul class="navbar-nav ms-auto mb-3 mb-lg-1">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                               
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Log out</a>
+                                </li>
+
+
+                            }
+                            else
+                            {
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Login</a>
+
+                                </li>
+
+
+                            }
+
+
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -129,7 +146,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - AutoPharma - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - AutoPharma  <a asp-area="" asp-controller="Home"> </a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

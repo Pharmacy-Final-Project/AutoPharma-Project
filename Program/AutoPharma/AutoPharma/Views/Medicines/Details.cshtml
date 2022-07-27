@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Medicine Details</h1>
 
-<div>
-    <h4>Medicine</h4>
-    <hr />
+<section style="background-color: #eee;" class="row justify-content-center">
+    <div class="card mb-2" >
+       <div class="card-body" class="row justify-content-center">
+
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -42,8 +43,14 @@
             @Html.DisplayFor(model => model.Information)
         </dd>
     </dl>
-</div>
+ </div>
+    </div>
+</section>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary mx-1">Edit</a> |
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary mx-1">Edit</a>
+                        }
+  
     <a asp-action="Index"  class="btn btn-outline-warning mx-1">Back to List</a>
 </div>
