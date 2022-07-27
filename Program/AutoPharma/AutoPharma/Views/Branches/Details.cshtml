@@ -6,34 +6,19 @@
 }
 
 <h1>Details</h1>
+ <div class="container bg-light">
+        <div class="col-md-12 text-center">
+    <h2>Branch  @Html.DisplayFor(model => model.Address)</h2>
+    </div>
+    </div>
 
-<h6> Fixes in this page</h6>
-<p>implement full name for users, instead of usernames</p>
-<p>make it available to change pharmacist branch or remove him from the branch</p>
-
-<div>
-    <h4>Branch</h4>
     <hr />
-    <dl class="row">
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-    </dl>
+   
 
     <h3>Branch Medicines: </h3>
     
     <table class="table table-striped">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>
                     Medicine Name:
@@ -41,12 +26,25 @@
                 <th>
                     Count:
                 </th>
+                <th>
+                    #
+                </th>
+                <th>
+                    #
+                </th>
+
+                 <th>
+                    #
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.BranchMedicines)
             {
                 <tr>
+                     <td>
+                        <img height=50px width=50px src="@Html.DisplayFor(x => item.Medicine.ImageUri)" ></img>
+                    </td>
                     <td>
                         @Html.DisplayFor(x => item.Medicine.Name)
                     </td>
@@ -101,9 +99,11 @@
         </tbody>
     </table>
 
-
-</div>
+<div class="container bg-light">
+        <div class="col-md-12 text-center">
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-success mx-1 ">Edit</a> |
     <a asp-action="Index" class="btn btn-outline-success mx-1 ">Back to List</a>
+</div>
+</div>
 </div>

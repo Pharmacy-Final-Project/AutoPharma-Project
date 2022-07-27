@@ -54,7 +54,38 @@ namespace AutoPharma.Controllers
 
             return View(branch);
         }
+        [Authorize(Roles = "Admin, Pharmacist")]
+        public async Task<IActionResult> DetailsM(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var branch = await _branch.GetBranch(id);
+            if (branch == null)
+            {
+                return NotFound();
+            }
+
+            return View(branch);
+        }
+        [Authorize(Roles = "Admin, Pharmacist")]
+        public async Task<IActionResult> DetailsPH(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var branch = await _branch.GetBranch(id);
+            if (branch == null)
+            {
+                return NotFound();
+            }
+
+            return View(branch);
+        }
 
         // GET: Branches/Create
         [Authorize(Roles = "Admin")]
